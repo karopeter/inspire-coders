@@ -1,0 +1,59 @@
+<div class="container">
+     <app-course-header></app-course-header>
+   <div class="content">
+       <nav class="sidebar">
+         <app-side-nav></app-side-nav>
+      </nav>
+      <main class="course-view">
+       <div class="overview">
+         <h1 class="overview__heading">Add Course</h1>
+       </div>
+       <div class="standard">
+        <div class="row g-3">
+          <div class="col">
+            <label for="title" style="margin-left: 10rem; margin-top: 2rem;">Title</label>
+            <input type="text" class="form-control" placeholder="Learn web development" id="autoSizingInput" aria-label="learn web development" style="margin-left: 10rem; margin-top: 2rem;">
+          </div>
+          <div class="col">
+            <label for="code" style="margin-left: 10rem; margin-top: 2rem;">001</label>
+            <input type="text" class="form-control" placeholder="001" aria-label="001" style="margin-left: 10rem; margin-top: 2rem;">
+          </div>
+         </div>
+       </div>
+       <div class="standard">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="inputInstructor" style="margin-left: 10rem; margin-top: 2rem;">Select Instructor</label>
+            <select id="inputInstructor" class="form-control system-drop">
+              <option>Terry</option>
+              <option>Gary</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="Level" style="margin-left: 13rem; margin-top: 2rem;">Level</label>
+            <select id="level" class="form-control system-drop-1">
+              <option>Beginner</option>
+              <option>Amatuer</option>
+            </select>
+          </div>
+        </div>
+       </div>
+       <div class="standard">
+        <div class="form-group">
+           <label for="description" style="margin-left: 10rem; margin-top: 2rem;">Description</label>
+           <textarea class="form-control" id="description"row="6" style="margin-left: 10rem; width: 100%"></textarea>
+        </div>
+       </div>
+       <div class="standard">
+        <div class="form-group row">
+         <div class="col-md-6">
+          <button class="btn btn-warning" style="margin-left: 10rem; margin-top: 2rem;">Cancel</button>
+         </div>
+         <div class="col-md-6">
+          <a [routerLink]="['/course-empty']"><button class="btn btn-primary" style="margin-left: 13rem; margin-top: 2rem; width: 100%;">Add Course</button></a>
+         </div>
+        </div>
+       </div>
+      </main>
+   </div>
+</div>

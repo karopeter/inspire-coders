@@ -1,0 +1,29 @@
+$color-dark: #000;
+$color-pink: #d63384;
+
+.heading__primary {
+  text-align: left;
+  margin-top: 4rem;
+  font-size: 3rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $color-dark;
+}
+
+.long__copy {
+  text-align: left;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: $color-dark;
+}
+
+.link__item {
+  margin-top: 1rem;
+}
+
+
+.image {
+  margin-top: 4rem;
+}
+
+

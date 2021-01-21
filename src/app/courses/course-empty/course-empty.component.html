@@ -1,0 +1,25 @@
+<div class="container">
+  <app-course-header></app-course-header>
+  <div class="content">
+    <nav class="sidebar">
+      <app-side-nav></app-side-nav>
+    </nav>
+    <main class="course-view">
+      <div class="overview">
+        <h1 class="overview__heading">All courses</h1>
+      </div>
+      <div class="standard">
+       <img src="/assets/img/coder4.png" alt="" class="standard__image">
+      </div>
+      <div class="standard">
+        <h2 class="standard__text">No Course added on the system.</h2>
+      </div>
+      <div class="standard">
+       <p class="standard__copy">Click the button below to add a course</p>
+      </div>
+      <div class="standard">
+        <a [routerLink]="['/course-success']"><button type="button" class="btn btn-primary" style="margin-left: 40rem; margin-top: 1rem;">Add Course</button></a>
+      </div>
+    </main>
+  </div>
+</div>

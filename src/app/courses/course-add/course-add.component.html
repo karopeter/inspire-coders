@@ -1,0 +1,37 @@
+<div class="container">
+  <app-course-header></app-course-header>
+  <div class="content">
+    <nav class="sidebar">
+      <app-side-nav></app-side-nav>
+    </nav>
+    <main class="course-view">
+       <div class="overview">
+         <h1 class="overview__heading">Add Course</h1>
+       </div>
+       <div class="detail-page">
+         <div class="row-page">
+          <div class="page-text">
+             <div class="navigation">
+              <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+              <label for="navi-toggle" class="navigation__button">
+                <span class="navigation__header">
+                  <img src="/assets/img/coder19.png" alt="" class="navigation__image">
+                </span>
+              </label>
+             </div>
+            <h1 class="inset-race">Course added successfully</h1>
+            <p class="long-copy">To see the newly added course click the view course button below, to create a new course. click add another course button</p>
+            <div class="form-group row">
+              <div class="col-md-6">
+              <a href="#"><button type="button" class="btn btn-light" style="font-size: 10px;">View Course</button></a>
+              </div>
+              <div class="col-md-6">
+                <a [routerLink]="['/course-label']"><button type="button" class="btn btn-primary" style="margin-left: 3rem; font-size: 10px;">Add Another Course</button></a>
+              </div>
+            </div>
+          </div>
+         </div>
+       </div>
+    </main>
+  </div>
+</div>

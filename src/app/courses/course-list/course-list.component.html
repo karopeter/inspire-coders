@@ -1,0 +1,68 @@
+<div class="container">
+  <app-course-header></app-course-header>
+  <div class="content">
+    <nav class="sidebar">
+      <app-side-nav></app-side-nav>
+    </nav>
+    <main class="course-view">
+      <div class="overview">
+        <h1 class="overview__heading">Ongoing courses</h1>
+        <ul>
+          <li style="margin-left: 38rem;"><a href="#">All</a></li>
+          <li><a href="#" style="color: #68BCFD;">Ongoing</a></li>
+          <li><a href="#">Coming Soon</a></li>
+          <li><a href="#">Complete</a></li>
+        </ul>
+      </div>
+      <div class="overview">
+        <form action="#" class="search">
+          <input type="text" class="search__input" placeholder="search course">
+        </form>
+        <button type="button" class="btn btn-primary" style="margin-left: 38rem; margin-top: 3rem; width: 20%; height: 20%;">Add Course</button>
+      </div>
+      <table class="table inset-link">
+        <thead>
+          <tr class="table-active">
+            <th scope="col">Title</th>
+            <th scope="col">Code</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Level</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody style="margin-top: 1rem;">
+           <tr scope="row" class="flame-fire">
+             <th>Web Fundamentals</th>
+             <td>001</td>
+             <td>Modupe Adebayo</td>
+             <td>Beginner</td>
+             <td>12/10/2020</td>
+             <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">yes</span></td>
+           </tr>
+        </tbody>
+        <tbody style="bottom: -252.11%;">
+          <tr scope="row" class="new-crash">
+            <th>Web Fundamentals</th>
+            <td>001</td>
+            <td>Modupe Adebayo</td>
+            <td>Beginner</td>
+            <td>12/10/2020</td>
+            <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">yes</span></td>
+          </tr>
+        </tbody>
+        <tbody>
+         <tr scope="row" class="new-crash">
+           <th>Web Fundamentals</th>
+           <td>001</td>
+           <td>Modupe Adebayo</td>
+           <td>Beginner</td>
+           <td>12/10/2020</td>
+           <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">yes</span></td>
+         </tr>
+        </tbody>
+      </table>
+      <mat-paginator [length]="totalCourses" [pageSize]="coursePerPage" [pageSizeOptions]="pageSizeOptions" style="background:  #F5F5FB;"></mat-paginator>
+    </main>
+  </div>
+</div>

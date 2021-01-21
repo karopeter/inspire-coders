@@ -1,0 +1,86 @@
+$color-white: #ffffff;
+$color-light-primary: #F5F5FB;
+$color-dark: #000;
+$color-blue: blue;
+
+.side__layout {
+   display: grid;
+   background: $color-white;
+   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+   grid-template-columns: [full-start] minmax(6rem, 1fr)  repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr)  [full-end];
+}
+
+%heading {
+  font-weight: 400;
+}
+
+.heading-3 {
+  @extend %heading;
+  font-size: 2rem;
+  color: $color-dark;
+  margin-left: 6rem;
+}
+
+.story {
+  &__picture {
+    background-color: $color-light-primary;
+    grid-column: full-start / col-end 4;
+    background-size: cover;
+    display: grid;
+    width: 95vh;
+    height: 95vh;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    position: relative;
+    align-items: left;
+    margin-left: 3rem;
+  }
+
+  &__logo {
+    font-size: 2rem;
+    color: $color-dark;
+    text-align: left;
+    text-decoration: none;
+    margin-left: 1rem;
+  }
+
+  &__image {
+    width: 65vh;
+    height: 65vh;
+    margin-top: 5rem;
+  }
+
+  &__content {
+    background-color: $color-white;
+    grid-column: col-start 5 / full-end;
+    display: grid;
+    padding: 1rem;
+    align-content: left;
+    justify-items: start;
+    margin-right: 5rem;
+  }
+}
+
+
+
+ul {
+  display: block;
+  margin: 0;
+  padding: 1rem 2rem;
+  list-style: none;
+  display: flex;
+
+
+li {
+  align-items: center;
+  width: 10rem;
+  font-size: 1rem;
+  justify-content: space-between;
+
+}
+
+  a {
+    text-decoration: none;
+    color: $color-dark;
+  }
+}

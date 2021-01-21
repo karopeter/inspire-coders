@@ -1,0 +1,63 @@
+
+
+
+
+// $color-white: #ffffff;
+// $color-light-primary: #212353;
+// $color-light-secondary: #FDC2CC;
+// $color-dark: #000;
+
+// .section-forum {
+//   background-color: $color-white;
+// }
+
+
+// .heading__primary {
+//   text-align: center;
+//   font-size: 2rem;
+//   color: $color-light-primary;
+//   margin-top: 2.5rem;
+// }
+
+// .long__copy {
+//    color: $color-dark;
+//    font-size: 1rem;
+//    margin-top: 1.5rem;
+//    text-align: center;
+// }
+
+// .story {
+//   height: 45vh;
+//   width: 40vh;
+//   margin: 0 auto;
+//   box-shadow: 0 3rem 6rem rgba($color-dark, .1);
+//   border-radius: 3px;
+//   padding: 6rem;
+//   background-color: $color-light-secondary;
+//   padding: 3rem;
+//   clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+
+//   &__shape {
+//     width: 10rem;
+//     height: 15rem;
+//     float: left;
+//     -webkit-shape-outside: parallelogram(10% at 10% 10%);
+//     shape-outside: parallelogram(10% at 10% 10%);
+//     -webkit-clip-path: parrallelogram(10% at 10% 10%);
+//     clip-path: parrallelogram(10% at 10% 10%);
+//     position: relative;
+//   }
+
+//   &__caption {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, 20%);
+//     color: $color-dark;
+//     font-size: 1.7rem;
+//     text-align: left;
+//     opacity: 0;
+//     transition: all .5s;
+//     backface-visibility: hidden;
+//   }
+// }

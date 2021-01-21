@@ -1,0 +1,45 @@
+<div class="side__layout">
+  <div class="story__picture">
+     <strong class="story__logo">Inspire coders</strong>
+     <img src="/assets/img/coder2.png" alt="" class="story__image">
+  </div>
+  <div class="story__content">
+    <ul>
+      <li><a [routerLink]="['/home']">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a  [routerLink]="['/course-create']">How It Works</a></li>
+      <li><a  href="#">Contact</a></li>
+      <li><a [routerLink]="['/signup']"><button type="button" class="btn btn-light">Signup</button></a></li>
+  </ul>
+  <h3 class="heading-3">Login to your account</h3>
+  <div class="form-floating mb-3">
+    <label for="username" style="margin-left: 6rem;">Username</label>
+    <input type="username" class="form-control" id="floatingUsername" placeholder="patml2021" style="margin-left: 6rem;">
+  </div>
+  <div class="form-floating mb-3">
+   <label for="password" style="margin-left: 6rem;">Password</label>
+   <input type="password" class="form-control" id="floatingPassword" placeholder="Enter your password" style="margin-left: 6rem;">
+  </div>
+   <div class="row">
+      <div class="col">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck" style="margin-left: 6rem;">
+          <label class="form-check-label" for="gridCheck" style="margin-left: 6rem;">
+            <p style="margin-left: 2rem;">keep me logged in</p>
+          </label>
+        </div>
+      </div>
+      <div clas="col">
+        <button type="button" class="btn btn-primary" style="margin-left: 6rem;">Login</button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6">
+       <a [routerLink]="['/signup']"><button type="button" class="btn btn-light" style="font-size: 12px; width: 100%; margin-left: 6rem;">Create an account</button></a>
+     </div>
+     <div class="col-md-6">
+       <a [routerLink]="['/forgot-password']"><button type="button" class="btn btn-light" style="margin-left: 6rem; font-size: 12px; width: 100%;">Forget Password?</button></a>
+     </div>
+    </div>
+  </div>
+</div>

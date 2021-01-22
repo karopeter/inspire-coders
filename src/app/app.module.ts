@@ -25,6 +25,8 @@ import { CourseAddComponent } from './courses/course-add/course-add.component';
 import { CourseLabelComponent } from './courses/course-label/course-label.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { AddFacilitatorComponent } from './facilitators/add-facilitator/add-facilitator.component';
+import { CreateFacilitatorComponent } from './facilitators/create-facilitator/create-facilitator.component';
+import { EditFacilitatorComponent } from './facilitators/edit-facilitator/edit-facilitator.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AddFacilitatorComponent } from './facilitators/add-facilitator/add-faci
     CourseAddComponent,
     CourseLabelComponent,
     CourseListComponent,
-    AddFacilitatorComponent
+    AddFacilitatorComponent,
+    CreateFacilitatorComponent,
+    EditFacilitatorComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,9 @@ import { AddFacilitatorComponent } from './facilitators/add-facilitator/add-faci
       { path: 'course-read', component: CourseReadComponent },
       { path: 'course-list', component: CourseListComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: 'add-facilitator', component: AddFacilitatorComponent }
+      { path: 'add-facilitator', component: AddFacilitatorComponent },
+      { path: 'create-facilitator', component: CreateFacilitatorComponent },
+      { path: 'edit-facilitator', component: EditFacilitatorComponent }
     ]),
     MatPaginatorModule
   ],

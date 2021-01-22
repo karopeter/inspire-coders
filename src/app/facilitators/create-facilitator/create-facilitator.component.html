@@ -1,0 +1,68 @@
+<div class="container">
+  <app-course-header></app-course-header>
+  <div class="content">
+    <nav class="sidebar">
+     <app-side-nav></app-side-nav>
+    </nav>
+    <main class="facilitator-view">
+      <div class="overview">
+        <h1 class="overview__heading">Add Facilitator</h1>
+      </div>
+      <div class="overview">
+        <span class="overview__span"><img src="/assets/img/user.svg" alt="" class="overview__icon">Facilitator</span>
+      </div>
+      <div class="overview">
+       <div class="row g-3">
+         <div class="col">
+          <label for="firstName" style="margin-left: 10rem; margin-top: 2rem;">First Name</label>
+          <input type="text" class="form-control" placeholder="Micheal" id="autoSizingInput" aria-label="Micheal" style="margin-left: 10rem; margin-top: 1rem;">
+         </div>
+         <div class="col">
+          <label for="lastName" style="margin-left: 10rem; margin-top: 2rem;">Last Name</label>
+          <input type="text" class="form-control" placeholder="Oyelami" aria-label="Oyelami" style="margin-left: 10rem; margin-top: 1rem;">
+         </div>
+       </div>
+      </div>
+      <div class="overview">
+        <div class="row g-3">
+         <div class="col">
+          <label for="firstName" style="margin-left: 10rem; margin-top: 2rem;">Email Address</label>
+          <input type="text" class="form-control" placeholder="michealoyelami23@gmail.com" id="autoSizingInput" aria-label="michealoyelami23@gmail.com" style="margin-left: 10rem; margin-top: 1rem;">
+         </div>
+         <div class="col">
+          <label for="username" style="margin-left: 10rem; margin-top: 2rem;">Username</label>
+          <input type="text" class="form-control" placeholder="Mickey" id="autoSizingInput" aria-label="Mickey" style="margin-left: 10rem; margin-top: 1rem;">
+         </div>
+        </div>
+      </div>
+      <div class="overview">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="inputCourse" style="margin-left: 10rem; margin-top: 2rem;">Select Course</label>
+            <select id="inputInstructor" class="form-control system-drop">
+              <option>JavaScript</option>
+              <option>Kotlin</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="phoneNumber" style="margin-left: 10rem; margin-top: 2rem;">Phone Number</label>
+            <select id="level" class="form-control system-drop-1">
+              <option>+2349058589954</option>
+              <option>+2345955956898</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="overview">
+        <div class="form-group row">
+          <div class="col-md-6">
+            <button class="btn btn-light" style="margin-left: 10rem; margin-top: 2rem;">Cancel</button>
+          </div>
+          <div class="col-md-6">
+            <a [routerLink]="['/edit-facilitator']"><button class="btn btn-primary" style="margin-left: 20rem; margin-top: 2rem; width: 60%;">Add Facilitator</button></a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

@@ -10,6 +10,8 @@ import { CourseLabelComponent } from './courses/course-label/course-label.compon
 import { CourseReadComponent } from './courses/course-read/course-read.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { AddFacilitatorComponent } from './facilitators/add-facilitator/add-facilitator.component';
+import { CreateFacilitatorComponent } from './facilitators/create-facilitator/create-facilitator.component';
+import { EditFacilitatorComponent } from './facilitators/edit-facilitator/edit-facilitator.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +25,9 @@ export const APP_ROUTES: Routes = [
   { path: 'course-read', component: CourseReadComponent },
   { path: 'course-list', component: CourseListComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'add-facilitator', component: AddFacilitatorComponent }
+  { path: 'add-facilitator', component: AddFacilitatorComponent },
+  { path: 'create-facilitator', component: CreateFacilitatorComponent },
+  { path: 'edit-facilitator', component: EditFacilitatorComponent }
 ];
 
 

@@ -1,0 +1,94 @@
+<div class="container">
+   <app-course-header></app-course-header>
+   <div class="content">
+      <nav class="sidebar">
+         <app-side-nav></app-side-nav>
+      </nav>
+      <main class="forum-view">
+        <div class="overview">
+          <h1 class="overview__heading">Forum</h1>
+        </div>
+        <div class="overview">
+          <span class="overview__span"><img src="/assets/img/user.svg" alt="" class="overview__icon">Forum</span>
+        </div>
+        <div class="overview">
+          <h1 class="overview__heading" style="font-size: 1rem;">Forum Name</h1>
+        </div>
+        <div class="overview">
+         <div class="col-3">
+          <form action="#" class="form">
+            <div class="form__group">
+              <input type="text" class="form__input" placeholder="Web Des" required>
+            </div>
+         </form>
+         </div>
+         <div class="col-3">
+          <form action="#" class="form">
+            <div class="form__group">
+              <input type="text" class="form__input" placeholder="Filter by course" required>
+            </div>
+         </form>
+         </div>
+         <div class="col-3">
+          <form action="#" class="form">
+            <div class="form__group">
+              <input type="text" class="form__input" placeholder="Filter by Date" required>
+            </div>
+         </form>
+         </div>
+         <div class="col-3">
+           <button type="button" class="btn btn-primary" style="margin-top: 5rem;">Add Forum</button>
+         </div>
+        </div>
+        <div class="overview">
+         <table class="table inset-link">
+           <thead>
+             <tr class="table-active">
+               <th scope="col">Name</th>
+               <th scope="col">Instructor</th>
+               <th scope="col">Course</th>
+               <th scope="col">Max size</th>
+               <th scope="col">No of Students</th>
+               <th scope="col">Date Created</th>
+               <th scope="col">Actions</th>
+             </tr>
+           </thead>
+           <tbody style="margin-top: 1rem;">
+             <tr scope="row" class="flame-fire">
+               <th>Web Fundamentals</th>
+               <td>Modupe Adebayo</td>
+               <td>JavaScript Basics</td>
+               <td>20</td>
+               <td>20</td>
+               <td>12/10/2021</td>
+               <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">Delete</span></td>
+             </tr>
+           </tbody>
+           <tbody style="margin-top: 1rem;">
+            <tr scope="row" class="flame-fire">
+              <th>Web Fundamentals</th>
+              <td>Modupe Adebayo</td>
+              <td>JavaScript Basics</td>
+              <td>20</td>
+              <td>20</td>
+              <td>12/10/2021</td>
+              <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">Delete</span></td>
+            </tr>
+          </tbody>
+          <tbody style="margin-top: 1rem;">
+             <tr scope="row" class="flame-fire">
+               <th>Web Fundamentals</th>
+               <td>Modupe Adebayo</td>
+               <td>JavaScript Basics</td>
+               <td>20</td>
+               <td>20</td>
+               <td>12/10/2021</td>
+               <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">Delete</span></td>
+             </tr>
+           </tbody>
+         </table>
+         <mat-paginator [length]="totalCourses" [pageSize]="coursePerPage" [pageSizeOptions]="pageSizeOptions" style="background:  #F5F5FB;"></mat-paginator>
+        </div>
+      </main>
+   </div>
+</div>

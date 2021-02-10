@@ -1,0 +1,61 @@
+<div class="container">
+   <app-course-header></app-course-header>
+   <div class="content">
+     <nav class="sidebar">
+       <app-side-nav></app-side-nav>
+     </nav>
+     <main class="facilitator-view">
+       <div class="overview">
+          <h1 class="overview__heading">All Facilitator</h1>
+       </div>
+       <div class="overview">
+          <span class="overview__span"><img src="/assets/img/user.svg" alt="" class="overview__icon">Facilitator</span>
+        </div>
+        <div class="overview">
+          <form action="#" class="search">
+            <input type="text" class="search__input" placeholder="search course">
+          </form>
+          <a [routerLink]="['/profile-facilitator']"><button type="button" class="btn btn-primary" style="margin-left: 38rem; margin-top: 3rem; width: 20%; height: 40%;">Add Facilitator</button></a>
+        </div>
+        <table class="table inset-link">
+           <thead>
+             <tr class="table-active">
+               <th scope="col">Name</th>
+               <th scope="col">Email</th>
+               <th scope="col">Phone Number</th>
+               <th scope="col">Date Created</th>
+               <th scope="col">Actions</th>
+             </tr>
+           </thead>
+           <tbody style="margin-top: 1rem;">
+             <tr scope="row" class="new-crash">
+               <th>Modupe Adebayo</th>
+               <td>moB@ymail.com</td>
+               <td>08083331011</td>
+               <td>12/10/2020</td>
+               <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">Delete</span></td>
+             </tr>
+           </tbody>
+           <tbody style="margin-top: 1rem;">
+            <tr scope="row" class="new-crash">
+              <th>Modupe Adebayo</th>
+              <td>moB@ymail.com</td>
+              <td>08083331011</td>
+              <td>12/10/2020</td>
+              <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">Delete</span></td>
+            </tr>
+           </tbody>
+           <tbody style="margin-top: 1rem;">
+            <tr scope="row" class="new-crash">
+              <th>Modupe Adebayo</th>
+              <td>moB@ymail.com</td>
+              <td>08083331011</td>
+              <td>12/10/2020</td>
+              <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;">Delete</span></td>
+            </tr>
+           </tbody>
+        </table>
+        <mat-paginator [length]="totalCourses" [pageSize]="coursePerPage" [pageSizeOptions]="pageSizeOptions" style="background:  #F5F5FB;"></mat-paginator>
+     </main>
+   </div>
+</div>

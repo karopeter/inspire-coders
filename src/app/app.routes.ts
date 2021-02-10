@@ -12,6 +12,12 @@ import { CourseListComponent } from './courses/course-list/course-list.component
 import { AddFacilitatorComponent } from './facilitators/add-facilitator/add-facilitator.component';
 import { CreateFacilitatorComponent } from './facilitators/create-facilitator/create-facilitator.component';
 import { EditFacilitatorComponent } from './facilitators/edit-facilitator/edit-facilitator.component';
+import { ListFacilitatorComponent } from './facilitators/list-facilitator/list-facilitator.component';
+import { AddForumComponent } from './forum/add-forum/add-forum.component';
+import { CreateForumComponent } from './forum/create-forum/create-forum.component';
+import { ListForumComponent } from './forum/list-forum/list-forum.component';
+import { ProfileFacilitatorComponent } from './facilitators/profile-facilitator/profile-facilitator.component';
+import { ConfirmPasswordComponent } from './auth/confirm-password/confirm-password.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,9 +31,15 @@ export const APP_ROUTES: Routes = [
   { path: 'course-read', component: CourseReadComponent },
   { path: 'course-list', component: CourseListComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'confirm-password', component: ConfirmPasswordComponent },
   { path: 'add-facilitator', component: AddFacilitatorComponent },
   { path: 'create-facilitator', component: CreateFacilitatorComponent },
-  { path: 'edit-facilitator', component: EditFacilitatorComponent }
+  { path: 'edit-facilitator', component: EditFacilitatorComponent },
+  { path: 'all-facilitator', component: ListFacilitatorComponent },
+  { path: 'profile-facilitator', component: ProfileFacilitatorComponent },
+  { path: 'forum', component: AddForumComponent },
+  { path: 'create-forum', component: CreateForumComponent },
+  { path: 'list-forum', component: ListForumComponent }
 ];
 
 

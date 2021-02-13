@@ -18,6 +18,7 @@ import { CreateForumComponent } from './forum/create-forum/create-forum.componen
 import { ListForumComponent } from './forum/list-forum/list-forum.component';
 import { ProfileFacilitatorComponent } from './facilitators/profile-facilitator/profile-facilitator.component';
 import { ConfirmPasswordComponent } from './auth/confirm-password/confirm-password.component';
+import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,6 +29,7 @@ export const APP_ROUTES: Routes = [
   { path: 'course-empty', component: CourseEmptyComponent },
   { path: 'course-success', component: CourseAddComponent },
   { path: 'course-label', component: CourseLabelComponent },
+  { path: 'course-details', component: CourseDetailsComponent },
   { path: 'course-read', component: CourseReadComponent },
   { path: 'course-list', component: CourseListComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

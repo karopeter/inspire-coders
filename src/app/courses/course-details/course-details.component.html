@@ -1,0 +1,57 @@
+<div class="container">
+  <app-course-header></app-course-header>
+  <div class="content">
+     <nav class="sidebar">
+      <app-side-nav></app-side-nav>
+     </nav>
+     <main class="course-view">
+       <div class="accordian" id="accordianExample" style="margin-top: 6rem; padding: 4rem; width: 60%; height: 500px;">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0"><button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #000;">Header Label</button><span><button type="button" class="btn btn-link collapsed close" data-dismiss="alert"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><span>&times;</span></button></span></h5>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordianExample" style>
+            <div class="card-body">
+             <h2 class="header__secondary">Headline Text</h2>
+              <p class="long__copy">
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident deserunt
+                 <br class="hidden-xs">
+                 hic fugit aliquam vero totam repellat, consectetur maxime assumenda necessitatibus
+               </p>
+               <input type="text" class="form-control" placeholder="Add placeholder text here" id="autoSizingInput" aria-label="Detailed Text" style="width: 30%; margin-left: 10rem;">
+               <button type="button" class="btn btn-primary mr-3" style="margin-top: 1rem; margin-left: 15rem; width: 10%;">Text</button>
+           </div>
+          </div>
+         </div>
+       </div>
+       <div class="accordian" id="accordianExample" style="float: right; padding: 4rem; width: 60%; height: 500px;">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0"><button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #000;">Header Label</button><span><button type="button" class="btn btn-link collapsed close" data-dismiss="alert"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><span>&times;</span></button></span></h5>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordianExample" style>
+            <div class="card-body">
+              <img src="/assets/img/coder25.png" alt="" class="sense__grey">
+             <h2 class="header__secondary">Headline Text</h2>
+               <p class="long__copy">
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident deserunt
+                 <br class="hidden-xs">
+                 hic fugit aliquam vero totam repellat, consectetur maxime assumenda necessitatibus
+                 <br class="hidden-xs">
+                 dolorum veniam quae sequi incidunt ea quas repellendus. Quibusdam, eligendi?
+               </p>
+               <div class="row">
+                <div class="col-6">
+                 <button type="button" class="btn btn-light" style="margin-top: 1rem; margin-left: 6rem;">Cancel</button>
+                </div>
+                <div class="col-6">
+                  <a [routerLink]="['/course-label']"><button type="button" class="btn btn-primary" style="margin-top: 1rem;">Text</button></a>
+                </div>
+               </div>
+           </div>
+          </div>
+         </div>
+       </div>
+     </main>
+  </div>
+</div>

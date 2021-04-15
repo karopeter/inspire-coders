@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Facilitator } from '../../models/facilitator';
+import { FacilitatorService } from '../../services/facilitator.service';
+
 
 @Component({
   selector: 'app-list-facilitator',
@@ -11,10 +14,47 @@ export class ListFacilitatorComponent implements OnInit {
   coursePerPage = 2;
   currentPage = 1;
   pageSizeOptions = [1, 2, 5, 10];
+  facilitators: Facilitator[];
+  fullName = '';
+  facilitatorId;
+  view = '';
+  selectedFacilitator: number;
+  page: number;
+  pageSize: number;
+  selectedEntry: boolean;
 
-  constructor() { }
+  constructor(private facilitatorService: FacilitatorService) { }
 
   ngOnInit(): void {
+    this.page = 1;
+    this.pageSize = 10;
+    this.facilitatorService.getAllFacilitator(1, 10).subscribe((data) => {
+      this.facilitators = data;
+      if (this.facilitators.length > 0) {
+         this.selectedFacilitator = this.facilitators[0].id;
+      }
+    });
   }
 
+  toggleView(view: string): void {
+    this.view = view;
+  }
+
+  toggleSelected(selected: number = null): void {
+    if (selected) {
+      if (this.isSelected(selected)) {
+         return;
+      } 
+      this.selectedFacilitator = selected;
+      console.log(selected);
+      return;
+    }
+    this.selectedFacilitator = null;
+  }
+
+  isSelected(id: number): boolean {
+    return id === this.selectedFacilitator;
+  }
 }
+
+

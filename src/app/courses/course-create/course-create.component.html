@@ -12,11 +12,11 @@
         <div class="row g-3">
           <div class="col">
             <label for="title" style="margin-left: 10rem; margin-top: 2rem;">Title</label>
-            <input type="text" class="form-control" placeholder="Learn web development" id="autoSizingInput" aria-label="learn web development" style="margin-left: 10rem; margin-top: 2rem;">
+            <input type="text" class="form-control" placeholder="Learn web development" id="autoSizingInput" [(ngModel)]="title" aria-label="learn web development" style="margin-left: 10rem; margin-top: 2rem;">
           </div>
           <div class="col">
             <label for="code" style="margin-left: 10rem; margin-top: 2rem;">001</label>
-            <input type="text" class="form-control" placeholder="001" aria-label="001" style="margin-left: 10rem; margin-top: 2rem;">
+            <input type="text" class="form-control" placeholder="001" aria-label="001" [(ngModel)]="code" style="margin-left: 10rem; margin-top: 2rem;">
           </div>
          </div>
        </div>
@@ -24,11 +24,11 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label for="description" style="margin-left: 10rem; margin-top: 2rem;">Description</label>
-            <textarea class="form-control" id="description"row="6" style="margin-left: 10rem; width: 100%"></textarea>
+            <textarea class="form-control" id="description"row="6" [(ngModel)]="description" style="margin-left: 10rem; width: 100%"></textarea>
           </div>
           <div class="form-group col-md-6">
             <label for="Level" style="margin-left: 13rem; margin-top: 2rem;">Level</label>
-            <select id="level" class="form-control system-drop-1">
+            <select id="level" [(ngModel)]="level" class="form-control system-drop-1">
               <option>Beginner</option>
               <option>Amatuer</option>
             </select>
@@ -41,7 +41,7 @@
           <button class="btn btn-warning" style="margin-left: 10rem; margin-top: 2rem;">Cancel</button>
          </div>
          <div class="col-md-6">
-          <a [routerLink]="['/course-empty']"><button class="btn btn-primary" style="margin-left: 13rem; margin-top: 2rem; width: 100%;">Add Course</button></a>
+           <button class="btn btn-primary" (click)="createCourse()" (click)="showToasterSuccess()" style="margin-left: 13rem; margin-top: 2rem; width: 100%;">Add Course</button>
          </div>
         </div>
        </div>

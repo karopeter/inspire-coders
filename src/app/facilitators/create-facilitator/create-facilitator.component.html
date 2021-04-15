@@ -15,11 +15,11 @@
        <div class="row g-3">
          <div class="col">
           <label for="firstName" style="margin-left: 10rem; margin-top: 2rem;">First Name</label>
-          <input type="text" class="form-control" placeholder="Micheal" id="autoSizingInput" aria-label="Micheal" style="margin-left: 10rem; margin-top: 1rem;">
+          <input type="text" class="form-control" placeholder="Micheal" id="autoSizingInput" aria-label="Micheal" [(ngModel)]="firstName" style="margin-left: 10rem; margin-top: 1rem;">
          </div>
          <div class="col">
           <label for="lastName" style="margin-left: 10rem; margin-top: 2rem;">Last Name</label>
-          <input type="text" class="form-control" placeholder="Oyelami" aria-label="Oyelami" style="margin-left: 10rem; margin-top: 1rem;">
+          <input type="text" class="form-control" placeholder="Oyelami" aria-label="Oyelami" [(ngModel)]="lastName" style="margin-left: 10rem; margin-top: 1rem;">
          </div>
        </div>
       </div>
@@ -27,11 +27,11 @@
         <div class="row g-3">
          <div class="col">
           <label for="firstName" style="margin-left: 10rem; margin-top: 2rem;">Email Address</label>
-          <input type="text" class="form-control" placeholder="michealoyelami23@gmail.com" id="autoSizingInput" aria-label="michealoyelami23@gmail.com" style="margin-left: 10rem; margin-top: 1rem;">
+          <input type="text" class="form-control" placeholder="michealoyelami23@gmail.com" id="autoSizingInput" aria-label="michealoyelami23@gmail.com" [(ngModel)]="email" style="margin-left: 10rem; margin-top: 1rem;">
          </div>
          <div class="col">
           <label for="username" style="margin-left: 10rem; margin-top: 2rem;">Username</label>
-          <input type="text" class="form-control" placeholder="Mickey" id="autoSizingInput" aria-label="Mickey" style="margin-left: 10rem; margin-top: 1rem;">
+          <input type="text" class="form-control" placeholder="Mickey" id="autoSizingInput" aria-label="Mickey" [(ngModel)]="username" style="margin-left: 10rem; margin-top: 1rem;">
          </div>
         </div>
       </div>
@@ -39,14 +39,14 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label for="inputCourse" style="margin-left: 10rem; margin-top: 2rem;">Select Course</label>
-            <select id="inputInstructor" class="form-control system-drop">
+            <select id="inputInstructor" [(ngModel)]="courseId"  class="form-control system-drop">
               <option>JavaScript</option>
               <option>Kotlin</option>
             </select>
           </div>
           <div class="form-group col-md-6">
             <label for="phoneNumber" style="margin-left: 10rem; margin-top: 2rem;">Phone Number</label>
-            <select id="level" class="form-control system-drop-1">
+            <select id="level" [(ngModel)]="phone" class="form-control system-drop-1">
               <option>+2349058589954</option>
               <option>+2345955956898</option>
             </select>
@@ -59,7 +59,7 @@
             <button class="btn btn-light" style="margin-left: 10rem; margin-top: 2rem;">Cancel</button>
           </div>
           <div class="col-md-6">
-            <a [routerLink]="['/edit-facilitator']"><button class="btn btn-primary" style="margin-left: 20rem; margin-top: 2rem; width: 60%;">Add Facilitator</button></a>
+            <button class="btn btn-primary" (click)="createFacilitator()" style="margin-left: 20rem; margin-top: 2rem; width: 60%;">Add Facilitator</button>
           </div>
         </div>
       </div>

@@ -15,11 +15,11 @@
        <div class="row g-3">
          <div class="col">
           <label for="forumName" style="margin-left: 10rem; margin-top: 2rem;">Forum Name</label>
-          <input type="text" class="form-control" placeholder="Game development with Unity" id="autoSizingInput" aria-label="game" style="margin-left: 10rem; width: 80%;">
+          <input type="text" class="form-control" placeholder="Game development with Unity" id="autoSizingInput" [(ngModel)]="name"  aria-label="game" style="margin-left: 10rem; width: 80%;">
          </div>
          <div class="col">
           <label for="numberOfStudent" style="margin-left: 10rem; margin-top: 2rem;">Number Of Student</label>
-          <select id="SelectInstructor" class="form-control system-drop">
+          <select id="SelectInstructor" [(ngModel)]="numberOfStudents" class="form-control system-drop">
             <option>24</option>
             <option>33</option>
           </select>
@@ -30,7 +30,7 @@
        <div class="row g-3">
         <div class="col">
           <label for="selectCourse" style="margin-left: 10rem; margin-top: 2rem;">Select Course</label>
-          <select id="selectCourse" class="form-control system-drop">
+          <select id="selectCourse" [(ngModel)]="courseId" class="form-control system-drop">
             <option>Ethical Hacking</option>
             <option>Docker</option>
             <option>React</option>
@@ -38,7 +38,7 @@
         </div>
         <div class="col">
          <label for="selectInstructor" style="margin-left: 10rem; margin-top: 2rem;">Select Instructor</label>
-         <select id="selectInstructor" class="form-control system-drop--1">
+         <select id="selectInstructor" [(ngModel)]="courseId" class="form-control system-drop--1">
            <option>Micheal</option>
            <option>Samuel</option>
            <option>Victor</option>
@@ -50,7 +50,7 @@
        <div class="row">
          <div class="form-group">
           <label for="startDate" style="margin-left: 11rem; margin-top: 2rem;">Start Date</label>
-          <input type="text" class="form-control" placeholder="dd / mm / yyyy" id="autoSizingInput" aria-label="Start Date" style="margin-left: 11rem; width: 80%;">
+          <input type="text" class="form-control" placeholder="dd / mm / yyyy" id="autoSizingInput" [(ngModel)]="startDate"  aria-label="Start Date"  style="margin-left: 11rem; width: 80%;">
          </div>
        </div>
       </div>
@@ -60,7 +60,7 @@
             <button class="btn btn-light" style="margin-left: 10rem; margin-top: 2rem;">Cancel</button>
           </div>
           <div class="col-md-6">
-            <a [routerLink]="['/list-forum']"><button class="btn btn-primary" style="margin-left: 20rem; margin-top: 2rem; width: 60%;">Add Forum</button></a>
+           <button class="btn btn-primary" (click)="createForum()" style="margin-left: 20rem; margin-top: 2rem; width: 60%;">Add Forum</button>
           </div>
         </div>
       </div>

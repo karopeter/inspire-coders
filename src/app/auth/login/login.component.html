@@ -7,18 +7,19 @@
     <ul>
       <li><a [routerLink]="['/home']">Home</a></li>
       <li><a href="#">About</a></li>
-      <li><a  [routerLink]="['/course-create']">How It Works</a></li>
+      <li><a  [routerLink]="['/course-empty']">How It Works</a></li>
       <li><a  href="#">Contact</a></li>
       <li><a [routerLink]="['/signup']"><button type="button" class="btn btn-light">Signup</button></a></li>
   </ul>
   <h3 class="heading-3">Login to your account</h3>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <div class="form-floating mb-3">
     <label for="username" style="margin-left: 6rem;">Username</label>
-    <input type="username" class="form-control" id="floatingUsername" placeholder="patml2021" style="margin-left: 6rem;">
+    <input type="username" class="form-control" id="" placeholder="patml2021" ngModel name="username" style="margin-left: 6rem;">
   </div>
   <div class="form-floating mb-3">
    <label for="password" style="margin-left: 6rem;">Password</label>
-   <input type="password" class="form-control" id="floatingPassword" placeholder="Enter your password" style="margin-left: 6rem;">
+   <input type="password" class="form-control" id="" placeholder="Enter your password"ngModel name="password" style="margin-left: 6rem;">
   </div>
    <div class="row">
       <div class="col">
@@ -41,5 +42,6 @@
        <a [routerLink]="['/forgot-password']"><button type="button" class="btn btn-light" style="margin-left: 6rem; font-size: 12px; width: 100%;">Forget Password?</button></a>
      </div>
     </div>
+    </form>
   </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Course } from '../../models/course';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-course-list',
@@ -12,9 +14,7 @@ export class CourseListComponent implements OnInit {
   currentPage = 1;
   pageSizeOptions = [1, 2, 5, 10];
 
-  constructor() { }
+  constructor(private courseService: CourseService) {}
 
-  ngOnInit(): void {
-  }
-
-}
+  ngOnInit(): void {}
+ }

@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +37,7 @@ import { ListForumComponent } from './forum/list-forum/list-forum.component';
 import { ProfileFacilitatorComponent } from './facilitators/profile-facilitator/profile-facilitator.component';
 import { ConfirmPasswordComponent } from './auth/confirm-password/confirm-password.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
+import { ToasterComponent } from './toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -63,11 +67,16 @@ import { CourseDetailsComponent } from './courses/course-details/course-details.
     ListForumComponent,
     ProfileFacilitatorComponent,
     ConfirmPasswordComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,

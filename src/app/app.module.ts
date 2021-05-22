@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +14,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { OrbitComponent } from './coders/orbit.component';
 import { FormComponent } from './coders/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { ForumComponent } from './coders/forum.component';
@@ -37,7 +37,10 @@ import { ListForumComponent } from './forum/list-forum/list-forum.component';
 import { ProfileFacilitatorComponent } from './facilitators/profile-facilitator/profile-facilitator.component';
 import { ConfirmPasswordComponent } from './auth/confirm-password/confirm-password.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
-import { ToasterComponent } from './toaster/toaster.component';
+import { DirectiveDirective } from './directive.directive';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
+
 
 @NgModule({
   declarations: [
@@ -68,18 +71,19 @@ import { ToasterComponent } from './toaster/toaster.component';
     ProfileFacilitatorComponent,
     ConfirmPasswordComponent,
     CourseDetailsComponent,
-    ToasterComponent
+    DirectiveDirective,
+    AlertComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: CodersComponent },
@@ -103,9 +107,9 @@ import { ToasterComponent } from './toaster/toaster.component';
       { path: 'create-forum', component: CreateForumComponent },
       { path: 'list-forum', component: ListForumComponent }
     ]),
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Facilitator } from '../../models/facilitator';
 import { FacilitatorService } from '../../services/facilitator.service';
+import { NotificationService } from './../../services/notification.service';
 
 @Component({
   selector: 'app-create-facilitator',
@@ -21,7 +22,7 @@ export class CreateFacilitatorComponent implements OnInit {
   numberOfStudents = 1;
   courseId = 1;
 
-  constructor(private facilitatorService: FacilitatorService) { }
+  constructor(private facilitatorService: FacilitatorService, private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -54,4 +55,7 @@ export class CreateFacilitatorComponent implements OnInit {
     });
   }
 
+  showToasterSuccess(): void {
+    this.notifyService.showSuccess('Message submitted successfully!!', 'http://tocoder-001-site1.itempurl.com');
+  }
 }

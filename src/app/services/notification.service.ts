@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ToasterService {
+export class NotificationService {
 
   constructor(private toastr: ToastrService) { }
 
@@ -18,7 +17,7 @@ export class ToasterService {
   }
 
   showInfo(message, title): void {
-    this.toastr.info(message, title);
+     this.toastr.info(message, title);
   }
 
   showWarning(message, title): void {

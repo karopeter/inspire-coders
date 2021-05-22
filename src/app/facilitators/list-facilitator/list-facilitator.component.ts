@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Facilitator } from '../../models/facilitator';
 import { FacilitatorService } from '../../services/facilitator.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -22,6 +23,8 @@ export class ListFacilitatorComponent implements OnInit {
   page: number;
   pageSize: number;
   selectedEntry: boolean;
+
+  private exChangedSubscription: Subscription;
 
   constructor(private facilitatorService: FacilitatorService) { }
 
@@ -44,7 +47,7 @@ export class ListFacilitatorComponent implements OnInit {
     if (selected) {
       if (this.isSelected(selected)) {
          return;
-      } 
+      }
       this.selectedFacilitator = selected;
       console.log(selected);
       return;

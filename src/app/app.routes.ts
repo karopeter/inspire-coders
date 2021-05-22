@@ -19,29 +19,33 @@ import { ListForumComponent } from './forum/list-forum/list-forum.component';
 import { ProfileFacilitatorComponent } from './facilitators/profile-facilitator/profile-facilitator.component';
 import { ConfirmPasswordComponent } from './auth/confirm-password/confirm-password.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
+import { AuthGuardService } from './services/auth.guard.service';
 
 export const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: CodersComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'course-create', component: CourseCreateComponent },
-  { path: 'course-empty', component: CourseEmptyComponent },
-  { path: 'course-success', component: CourseAddComponent },
-  { path: 'course-label', component: CourseLabelComponent },
-  { path: 'course-details', component: CourseDetailsComponent },
-  { path: 'course-read', component: CourseReadComponent },
-  { path: 'course-list', component: CourseListComponent },
+  { path: 'course-empty', component: CourseEmptyComponent, canActivate: [AuthGuardService] , children: [
+    { path: 'course-create', component: CourseCreateComponent},
+    { path: 'course-success', component: CourseAddComponent },
+    { path: 'course-label', component: CourseLabelComponent },
+    { path: 'course-details', component: CourseDetailsComponent },
+    { path: 'course-read', component: CourseReadComponent },
+    { path: 'course-list', component: CourseListComponent },
+  ] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'confirm-password', component: ConfirmPasswordComponent },
-  { path: 'add-facilitator', component: AddFacilitatorComponent },
-  { path: 'create-facilitator', component: CreateFacilitatorComponent },
-  { path: 'edit-facilitator', component: EditFacilitatorComponent },
-  { path: 'all-facilitator', component: ListFacilitatorComponent },
-  { path: 'profile-facilitator', component: ProfileFacilitatorComponent },
-  { path: 'forum', component: AddForumComponent },
-  { path: 'create-forum', component: CreateForumComponent },
-  { path: 'list-forum', component: ListForumComponent }
+  { path: 'add-facilitator', component: AddFacilitatorComponent, children: [
+    { path: 'create-facilitator', component: CreateFacilitatorComponent },
+    { path: 'edit-facilitator', component: EditFacilitatorComponent },
+    { path: 'all-facilitator', component: ListFacilitatorComponent }
+  ]},
+  { path: 'forum', component: AddForumComponent, children: [
+    { path: 'create-forum', component: CreateForumComponent },
+    { path: 'list-forum', component: ListForumComponent },
+    { path: 'profile-facilitator', component: ProfileFacilitatorComponent },
+  ]},
 ];
 
 

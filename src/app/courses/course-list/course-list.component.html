@@ -22,7 +22,7 @@
         </form>
         <button type="button" class="btn btn-primary" style="margin-left: 40rem; margin-top: 3rem; width: 20%; height: 40%">Add Course</button>
       </div>
-      <table class="table inset-link">
+      <table class="table inset-link" [ngClass]="isSelected(course.id) ? 'shadow' : null" *ngFor="let course of courses" (click)="toggleCourse(course.id)">
         <thead>
           <tr class="table-active">
             <th scope="col">Title</th>
@@ -35,16 +35,16 @@
         </thead>
         <tbody style="margin-top: 1rem;">
            <tr scope="row" class="flame-fire">
-             <th>Web Fundamentals</th>
-             <td>001</td>
-             <td>Modupe Adebayo</td>
-             <td>Beginner</td>
-            <td>14/04/2021</td>
+             <th>{{ course.title }}</th>
+             <td>{{ course.code }}</td>
+             <td>{{ course.description }}</td>
+             <td>{{ course.level}}</td>
+            <td>{{ course.createdOn }}</td>
              <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;"><img src="/assets/img/coder26.svg" alt="" class="image"></span></td>
            </tr>
         </tbody>
       </table>
-      <mat-paginator [length]="totalCourses" [pageSize]="coursePerPage" [pageSizeOptions]="pageSizeOptions" style="background:  #F5F5FB;"></mat-paginator>
+      <mat-paginator [length]="totalCourses" [pageSize]="coursePerPage" [pageSizeOptions]="pageSizeOptions" style="background: #F5F5FB;"></mat-paginator>
     </main>
   </div>
 </div>

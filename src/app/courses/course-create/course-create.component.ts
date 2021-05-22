@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
-import { ToasterService } from '../../services/toaster.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-course-create',
@@ -16,7 +16,7 @@ export class CourseCreateComponent implements OnInit {
   level = '';
   numberOfStudents = 2;
 
-  constructor(private courseService: CourseService, private toasterService: ToasterService) { }
+  constructor(private courseService: CourseService, private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -44,6 +44,6 @@ export class CourseCreateComponent implements OnInit {
    }
 
    showToasterSuccess(): void {
-     this.toasterService.showSuccess('Course created successfully!!', 'http://coders150321-001-site1.itempurl.com');
+     this.notifyService.showSuccess('Courses Submitted Successfully!!!', 'http://tocoder-001-site1.itempurl.com');
    }
 }

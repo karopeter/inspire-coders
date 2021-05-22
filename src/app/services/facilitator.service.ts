@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
-const  facilitatorUrl = 'http://coders150321-001-site1.itempurl.com';
+const  facilitatorUrl = 'http://tocoder-001-site1.itempurl.com';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,11 @@ export class FacilitatorService {
       }),
       catchError(this.handleError)
     );
+  }
+
+
+  getFacilitator(slug: string): Observable<Facilitator> {
+    return this.http.get<Facilitator>(`${facilitatorUrl}/api/Facilitator/${slug}`);
   }
 
   addFacilitator(newFacilitator: Facilitator): Observable<any> {

@@ -40,7 +40,7 @@
            <button type="button" class="btn btn-primary" style="margin-top: 3rem;">Add Forum</button>
          </div>
         </div>
-         <table class="table inset-link">
+         <table class="table inset-link" [ngClass]="isSelected(forum.id) ? 'shadow' : null " *ngFor="let forum of forums" (click)="toggleSelected(forum.id)">
            <thead>
              <tr class="table-active">
                <th scope="col">Name</th>
@@ -54,34 +54,12 @@
            </thead>
            <tbody style="margin-top: 1rem;">
              <tr scope="row" class="flame-fire">
-               <th>Web Fundamentals</th>
-               <td>Modupe Adebayo</td>
-               <td>JavaScript Basics</td>
-               <td>20</td>
-               <td>20</td>
-               <td>12/10/2021</td>
-               <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;"><img src="/assets/img/coder26.svg" alt="" class="image"></span></td>
-             </tr>
-           </tbody>
-           <tbody style="margin-top: 1rem;">
-            <tr scope="row" class="flame-fire">
-              <th>Web Fundamentals</th>
-              <td>Modupe Adebayo</td>
-              <td>JavaScript Basics</td>
-              <td>20</td>
-              <td>20</td>
-              <td>12/10/2021</td>
-              <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;"><img src="/assets/img/coder26.svg" alt="" class="image"></span></td>
-            </tr>
-          </tbody>
-          <tbody style="margin-top: 1rem;">
-             <tr scope="row" class="flame-fire">
-               <th>Web Fundamentals</th>
-               <td>Modupe Adebayo</td>
-               <td>JavaScript Basics</td>
-               <td>20</td>
-               <td>20</td>
-               <td>12/10/2021</td>
+               <th>{{ forum.name }}</th>
+               <td>{{ forum.instructorId }}</td>
+               <td>{{ forum.courseId }}</td>
+               <td>{{ forum.maxSize }}</td>
+               <td>{{ forum.numberOfStudents }}</td>
+               <td>{{ forum.createdOn }}</td>
                <td><img src="/assets/img/coder21.png" alt="" class="image"><span style="margin-left: 1rem;"><img src="/assets/img/coder26.svg" alt="" class="image"></span></td>
              </tr>
            </tbody>

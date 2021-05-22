@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Forum } from '../../models/forum';
 import { ForumService } from '../../services/forum.service';
+import { NotificationService } from './../../services/notification.service';
 
 @Component({
   selector: 'app-create-forum',
@@ -16,7 +17,7 @@ export class CreateForumComponent implements OnInit {
   startDate = '';
   maxSize = 1;
 
-  constructor(private forumService: ForumService) { }
+  constructor(private forumService: ForumService, private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -44,4 +45,7 @@ export class CreateForumComponent implements OnInit {
     });
   }
 
+  showToasterSuccess(): void {
+    this.notifyService.showSuccess('Message submitted successfully!!!', 'http://tocoder-001-site1.itempurl.com');
+  }
 }

@@ -1,3 +1,4 @@
+<ng-template appPlaceholder></ng-template>
 <div class="side__layout">
   <div class="story__picture">
      <strong class="story__logo">Inspire coders</strong>
@@ -12,14 +13,15 @@
       <li><a [routerLink]="['/signup']"><button type="button" class="btn btn-light">Signup</button></a></li>
   </ul>
   <h3 class="heading-3">Login to your account</h3>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form #authForm="ngForm">
+    <!-- <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert> -->
   <div class="form-floating mb-3">
     <label for="username" style="margin-left: 6rem;">Username</label>
-    <input type="username" class="form-control" id="" placeholder="patml2021" ngModel name="username" style="margin-left: 6rem;">
+    <input type="username" class="form-control" id="" placeholder="patml2021" name="username" [(ngModel)]="auth.username" required style="margin-left: 6rem;">
   </div>
   <div class="form-floating mb-3">
    <label for="password" style="margin-left: 6rem;">Password</label>
-   <input type="password" class="form-control" id="" placeholder="Enter your password"ngModel name="password" style="margin-left: 6rem;">
+   <input type="password" class="form-control" id="" placeholder="Enter your password" name="password" [(ngModel)]="auth.password" minlength="6" required style="margin-left: 6rem;">
   </div>
    <div class="row">
       <div class="col">
@@ -31,7 +33,7 @@
         </div>
       </div>
       <div clas="col">
-        <button type="button" class="btn btn-primary" style="margin-left: 6rem;">Login</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit(authForm)" (click)="showToasterSuccess()" style="margin-left: 6rem;">Login</button>
       </div>
     </div>
     <div class="form-group row">

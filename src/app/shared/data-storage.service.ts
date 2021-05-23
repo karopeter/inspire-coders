@@ -18,4 +18,11 @@ export class DataStorageService {
       console.log(response);
     });
   }
+
+  fetchFacilitator(page: number, pageSize: number) {
+    const facilitators = this.facilitatorService.getAllFacilitator(page, pageSize);
+    return this.http.get(`${baseUrl}/api/Course/${page}/${pageSize}`).subscribe(resData => {
+      console.log(resData);
+    })
+  }
 }

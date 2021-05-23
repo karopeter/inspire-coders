@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
    error!: string;
    @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
    private closeSub: Subscription;
-  constructor(private authService: AuthService, private notifyService: NotificationService, private route: Router, componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private authService: AuthService, private notifyService: NotificationService, private route: Router, private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(): void {
   }
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.auth.password = '';
     }, errorMessage => {
       console.log(errorMessage);
+      this.showErrorAlert(errorMessage);
     });
     form.reset();
   }

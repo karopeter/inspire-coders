@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Forum } from '../../models/forum';
 import { ForumService } from '../../services/forum.service';
 import { NotificationService } from './../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-forum',
@@ -17,7 +18,7 @@ export class CreateForumComponent implements OnInit {
   startDate = '';
   maxSize = 1;
 
-  constructor(private forumService: ForumService, private notifyService: NotificationService) { }
+  constructor(private forumService: ForumService,  private route: Router, private notifyService: NotificationService) {}
 
   ngOnInit(): void {
   }
@@ -41,6 +42,7 @@ export class CreateForumComponent implements OnInit {
     };
     this.forumService.addForum(this.forum).subscribe((response) => {
        this.name = '';
+       this.route.navigate(['/list-forum']);
        console.log(response);
     });
   }

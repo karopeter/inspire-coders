@@ -2,7 +2,6 @@ import { Component, OnInit, ComponentFactoryResolver, OnDestroy, ViewChild } fro
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
-import { Router } from '@angular/router';
 import { AlertComponent } from '../../shared/alert/alert.component';
 import { Subscription } from 'rxjs';
 import { PlaceholderDirective } from '../../shared/placeholder/placeholder.directive';
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
    error!: string;
    @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
    private closeSub: Subscription;
-  constructor(private authService: AuthService, private notifyService: NotificationService, private route: Router, private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private authService: AuthService, private notifyService: NotificationService, private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(): void {
   }
@@ -26,7 +25,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log(this.auth);
     this.authService.login(this.auth).subscribe(resData => {
       console.log('Message sent' + resData);
-      this.route.navigate(['/home']);
       this.auth.username = '';
       this.auth.password = '';
     }, errorMessage => {

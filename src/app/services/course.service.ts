@@ -18,7 +18,7 @@ export class CourseService {
   constructor(private http: HttpClient) { }
 
   getAllCourse(page: number, pageSize: number): Observable<Course[]> {
-     return this.http.get<Course[]>(`${courseUrl}​/api​/Course​/${page}​/${pageSize}`).pipe(
+     return this.http.get<Course[]>(`${courseUrl}/api/Course/${page}/${pageSize}`).pipe(
       tap((data) => {
         console.log('Course', JSON.stringify(data));
       }),

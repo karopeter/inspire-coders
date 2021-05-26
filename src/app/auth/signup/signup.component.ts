@@ -12,16 +12,15 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class SignupComponent implements OnInit {
    auth: any = {};
-  constructor(private authService: AuthService, private route: Router, private notifyService: NotificationService) { }
+  constructor(private authService: AuthService, private router: Router,  private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm): void {
     console.log(this.auth);
-    this.authService.signup(this.auth).subscribe(resData => {
+    this.authService.registerUser(this.auth).subscribe(resData => {
       console.log('Message Sent' + resData);
-      this.route.navigate(['/login']);
       this.auth.username = '';
       this.auth.email = '';
       this.auth.firstName = '';

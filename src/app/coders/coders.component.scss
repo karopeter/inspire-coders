@@ -1,6 +1,9 @@
 $color-dark: #000;
 $color-pink: #d63384;
 
+
+$bp-medium: 56.75rem;
+
 .heading__primary {
   text-align: left;
   margin-top: 4rem;
@@ -8,6 +11,12 @@ $color-pink: #d63384;
   font-weight: 300;
   text-transform: uppercase;
   color: $color-dark;
+
+  @media only screen and(max-width: $bp-medium) {
+     font-weight: 150;
+     font-size: 1.5rem;
+     text-align: left;
+  }
 }
 
 .long__copy {
@@ -15,6 +24,11 @@ $color-pink: #d63384;
   margin-top: 2rem;
   font-size: 1rem;
   color: $color-dark;
+
+  @media only screen and(max-width: $bp-medium) {
+      text-align: left;
+      font-size: 1rem;
+  }
 }
 
 .link__item {

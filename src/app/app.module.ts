@@ -40,6 +40,7 @@ import { CourseDetailsComponent } from './courses/course-details/course-details.
 import { DirectiveDirective } from './directive.directive';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { AlertComponent } from './shared/alert/alert.component';
     ConfirmPasswordComponent,
     CourseDetailsComponent,
     DirectiveDirective,
-    AlertComponent
+    AlertComponent,
+    DashboardComponent
   ],
   imports: [
   BrowserModule,
@@ -105,7 +107,8 @@ import { AlertComponent } from './shared/alert/alert.component';
       { path: 'profile-facilitator', component: ProfileFacilitatorComponent },
       { path: 'forum', component: AddForumComponent },
       { path: 'create-forum', component: CreateForumComponent },
-      { path: 'list-forum', component: ListForumComponent }
+      { path: 'list-forum', component: ListForumComponent },
+      { path: 'dashboard', component: DashboardComponent }
     ]),
     MatPaginatorModule,
   ],

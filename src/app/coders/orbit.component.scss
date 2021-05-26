@@ -7,6 +7,11 @@ $color-white: #fff;
 
 // #3F3356;
 
+$bp-largest: 75em;
+$bp-large: 68.75em;
+$bp-medium: 56.75rem;
+$bp-small: 37.5em;
+$bp-smallest: 31.25em;
 
 .section-features {
   background-color: $color-pink;
@@ -17,12 +22,30 @@ $color-white: #fff;
   background-position: cover;
   width: 70%;
   height: 70%;
+
+  @media only screen and (max-width: $bp-medium) {
+    margin: 0;
+    width: 70%;
+    height: 70%;
+    padding: 5em;
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
 }
 
 .heading__secondary {
   color: $color-dark;
   font-size: 2rem;
   margin-top: 1.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+      font-size: 1rem;
+  }
 }
 
 .heading__tertiary {
@@ -43,6 +66,10 @@ $color-white: #fff;
   font-size: 1.5rem;
   color: $color-dark;
   margin-top: 1.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    font-size: 1rem;
+  }
 }
 
 

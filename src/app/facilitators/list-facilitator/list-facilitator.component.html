@@ -19,7 +19,7 @@
           </form>
           <a [routerLink]="['/profile-facilitator']"><button type="button" class="btn btn-primary" style="margin-left: 40rem; margin-top: 3rem; width: 20%; height: 40%;">Add Facilitator</button></a>
         </div>
-        <table class="table inset-link" [ngClass]="isSelected(facilitator.id) ? 'shadow' : null" *ngFor="let facilitator of facilitators" (click)="toggleSelected(facilitator.id)">
+        <table class="table inset-link">
            <thead>
              <tr class="table-active">
                <th scope="col">Name</th>
@@ -30,7 +30,7 @@
              </tr>
            </thead>
            <tbody style="margin-top: 1rem;">
-             <tr scope="row" class="new-crash">
+             <tr scope="row" class="new-crash" [ngClass]="isSelected(facilitator.id) ? 'shadow' : null" *ngFor="let facilitator of facilitators" (click)="toggleSelected(facilitator.id)">
                <th>{{ facilitator.fullName}}</th>
                <td>{{ facilitator.email }}</td>
                <td>{{ facilitator.phone }}</td>

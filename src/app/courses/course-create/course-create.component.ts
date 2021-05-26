@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
 import { NotificationService } from '../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-create',
@@ -16,7 +17,7 @@ export class CourseCreateComponent implements OnInit {
   level = '';
   numberOfStudents = 2;
 
-  constructor(private courseService: CourseService, private notifyService: NotificationService) { }
+  constructor(private courseService: CourseService, private route: Router, private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -39,6 +40,7 @@ export class CourseCreateComponent implements OnInit {
      };
      this.courseService.addCourse(this.course).subscribe((response) => {
       this.title = '';
+      this.route.navigate(['/course-list']);
       console.log(response);
     });
    }

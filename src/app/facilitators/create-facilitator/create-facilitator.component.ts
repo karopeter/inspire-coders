@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Facilitator } from '../../models/facilitator';
 import { FacilitatorService } from '../../services/facilitator.service';
 import { NotificationService } from './../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-facilitator',
@@ -22,7 +23,7 @@ export class CreateFacilitatorComponent implements OnInit {
   numberOfStudents = 1;
   courseId = 1;
 
-  constructor(private facilitatorService: FacilitatorService, private notifyService: NotificationService) { }
+  constructor(private facilitatorService: FacilitatorService, private route: Router, private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -51,6 +52,7 @@ export class CreateFacilitatorComponent implements OnInit {
     };
     this.facilitatorService.addFacilitator(this.facilitator).subscribe((response) => {
       this.firstName = '';
+      this.route.navigate(['/all-facilitator']);
       console.log(response);
     });
   }

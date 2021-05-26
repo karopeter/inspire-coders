@@ -1,0 +1,84 @@
+<div class="container">
+  <app-course-header></app-course-header>
+   <div class="content">
+       <nav class="sidebar">
+         <app-side-nav></app-side-nav>
+       </nav>
+       <main class="dashboard-view">
+         <div class="overview">
+           <h1 class="overview__heading">Dashboard</h1>
+         </div>
+         <div class="overview">
+          <span class="overview__span"><img src="/assets/img/user.svg" alt="" class="overview__icon">Dashboard</span>
+        </div>
+        <div class="overview">
+          <div class="welcome-board">
+            <div class="row">
+              <div class="col-6">
+                 <h1 class="heading__secondary">Welcome Mo</h1>
+                 <p class="paragraph">
+                   Hi welcome, this page is the general overview section of the admin panel which
+                   <br class="hidden-xs">
+                   you could edit and modify the value of the page to ya' preferred taste.
+                 </p>
+                 <a [routerLink]="['/course-empty']"><button type="submit" class="btn btn--white">Take a quick tour</button></a>
+              </div>
+              <div class="col-6">
+                <img src="/assets/img/coder6.png" alt="" class="image">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overview">
+          <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+              <div class="col">
+                <div class="total__box">
+                  <div class="col-6">
+                    <img src="/assets/img/coder22.png" alt="" class="image--1">
+                  </div>
+                  <div class="col-6">
+                    <p class="no-pad">Total Number of Students</p>
+                    <h3 class="demi">22.8%</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="total__box">
+                  <div class="col-6">
+                    <img src="/assets/img/coder24.png" alt="" class="image--1">
+                  </div>
+                  <div class="col-6">
+                    <p class="no-pad">Total Number of Forums</p>
+                    <h3 class="demi">22.8%</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="total__box">
+                  <div class="col-6">
+                    <img src="/assets/img/coder24.png" alt="" class="image--1">
+                  </div>
+                  <div class="col-6">
+                    <p class="no-pad">Total Number of Courses</p>
+                    <h3 class="demi">22.8%</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="total__box">
+                  <div class="col-6">
+                    <img src="/assets/img/coder24.png" alt="" class="image--1">
+                  </div>
+                  <div class="col-6">
+                    <p class="no-pad">Total Number of Facilitators</p>
+                    <h3 class="demi">22.8%</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </main>
+   </div>
+</div>

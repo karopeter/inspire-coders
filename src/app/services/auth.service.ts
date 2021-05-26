@@ -1,20 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { User } from '../models/user.model';
+import { Observable, throwError, Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { Auth } from '../models/auth';
+import { Login } from '../models/login';
 
 const authUrl = 'http://tocoder-001-site1.itempurl.com';
 
-export interface AuthResponseData {
-  kind: string;
-  idToken: string;
-  email: string;
-  refreshToken: string;
-  localId: string;
-  expiresIn: string;
-  registered?: boolean;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,53 +17,66 @@ export class AuthService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
   };
-  user = new BehaviorSubject<User>(null);
-  constructor(private http: HttpClient) { }
+  private isAuthenticated = false;
+  private token: string;
+  private tokenTimer: any;
+  private resetToken: string;
+  private userId: string;
+  private authStatusListener = new Subject<boolean>();
+  constructor(private http: HttpClient, private router: Router) { }
 
-  signup(data: any): Observable<any> {
-     return this.http.post<AuthResponseData>
-     (`${authUrl}/api/Account/signup`, data, this.httpOptions).pipe(catchError(this.handleError), tap(resData => {
+  getToken() {
+    return this.token;
+  }
+
+  getResetToken(): void {
+    this.resetToken;
+  }
+
+  getIsAuth() {
+    return this.isAuthenticated;
+  }
+
+  getUserId() {
+    return this.userId;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
+   registerUser(firstName: string, lastName: string, email: string, username: string, password: string) {
+     const auth: Auth = {firstName: firstName, lastName: lastName, email: email, username: username, password: password};
+     return this.http.post(`${authUrl}/api/Account/signup`, auth, this.httpOptions).pipe(catchError(this.handleError), tap(resData => {
        console.log(resData);
-       this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
      }));
   }
 
   login(username: string, password: string) {
-    return this.http.post<AuthResponseData>(`${authUrl}/api/Account/login`,
-    {
-    username: username,
-    password: password,
-    returnSecureToken: true
-  }, this.httpOptions).pipe(catchError(this.handleError), tap(resData => {
-       console.log(resData);
-       this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
+    const login: Login = {username: username, password: password };
+    return this.http.post<{token: string, expiresIn: number, userId: string }>(`${authUrl}/api/Account/login`, login, this.httpOptions).pipe(catchError(this.handleError), tap(resData => {
+       const token = resData.token;
+       this.token = token;
+      if (token) {
+        const expiresInDuration = resData.expiresIn;
+        this.isAuthenticated = true;
+        this.userId = resData.userId;
+        this.authStatusListener.next(true);
+        const now = new Date();
+        const expirationDate = new Date(now.getTime() * expiresInDuration * 1000);
+        console.log(expirationDate);
+        this.saveAuthData(token, expirationDate, this.userId);
+        this.router.navigate(['/dashboard']);
+      }
     }));
   }
 
+   private saveAuthData(token: string, expirationDate: Date, userId: string) {
+     localStorage.setItem('token', token);
+     localStorage.setItem('expiration', expirationDate.toISOString());
+     localStorage.setItem('userId', userId);
+   }
 
-  autoLogin(): void {
-    const userData: {
-      email: string;
-      id: string;
-      token: string;
-      tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (!userData) {
-      return;
-    }
-    const loadedUser = new User(userData.email, userData.id, userData.token, new Date(userData.tokenExpirationDate));
-
-    if (loadedUser) {
-      this.user.next(loadedUser);
-      const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
-    }
-  }
-
-  private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
-    this.user.next(user);
-  }
 
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknow error occured';

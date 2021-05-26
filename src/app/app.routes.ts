@@ -20,6 +20,7 @@ import { ProfileFacilitatorComponent } from './facilitators/profile-facilitator/
 import { ConfirmPasswordComponent } from './auth/confirm-password/confirm-password.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 import { AuthGuardService } from './services/auth.guard.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,6 +47,7 @@ export const APP_ROUTES: Routes = [
     { path: 'list-forum', component: ListForumComponent },
     { path: 'profile-facilitator', component: ProfileFacilitatorComponent },
   ]},
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, throwError, Subject } from 'rxjs';
-import { Router } from '@angular/router';
 import { Auth } from '../models/auth';
 import { Login } from '../models/login';
+import { ForgetPassword } from '../models/forget-password.model';
 
 const authUrl = 'http://tocoder-001-site1.itempurl.com';
 
@@ -23,7 +23,7 @@ export class AuthService {
   private resetToken: string;
   private userId: string;
   private authStatusListener = new Subject<boolean>();
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   getToken() {
     return this.token;
@@ -47,14 +47,14 @@ export class AuthService {
 
    registerUser(firstName: string, lastName: string, email: string, username: string, password: string) {
      const auth: Auth = {firstName: firstName, lastName: lastName, email: email, username: username, password: password};
-     return this.http.post(`${authUrl}/api/Account/signup`, auth, this.httpOptions).pipe(catchError(this.handleError), tap(resData => {
+     return this.http.post(`${authUrl}/api/Account/signup`, auth, this.httpOptions).pipe(catchError(this.handleError), subscribe(resData => {
        console.log(resData);
      }));
   }
 
   login(username: string, password: string) {
     const login: Login = {username: username, password: password };
-    return this.http.post<{token: string, expiresIn: number, userId: string }>(`${authUrl}/api/Account/login`, login, this.httpOptions).pipe(catchError(this.handleError), tap(resData => {
+    return this.http.post<{token: string, expiresIn: number, userId: string }>(`${authUrl}/api/Account/login`, login, this.httpOptions).pipe(catchError(this.handleError), subscribe(resData => {
        const token = resData.token;
        this.token = token;
       if (token) {
@@ -66,9 +66,15 @@ export class AuthService {
         const expirationDate = new Date(now.getTime() * expiresInDuration * 1000);
         console.log(expirationDate);
         this.saveAuthData(token, expirationDate, this.userId);
-        this.router.navigate(['/dashboard']);
       }
     }));
+  }
+
+  forgetPassword(username: string, oldPassword: string, newPassword: string) {
+    const forgetPassword: ForgetPassword = {username: username, oldPassword: oldPassword, newPassword: newPassword };
+    return this.http.patch(`${authUrl}/api/Account/changepassword/${username}/${forgotpassword}`, forgetPassword).subscribe(resetToken => {
+      console.log(resetToken);
+    });
   }
 
    private saveAuthData(token: string, expirationDate: Date, userId: string) {

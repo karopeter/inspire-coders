@@ -12,7 +12,7 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class SignupComponent implements OnInit {
    auth: any = {};
-  constructor(private authService: AuthService, private router: Router,  private notifyService: NotificationService) { }
+  constructor(private authService: AuthService, private route: Router,  private notifyService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit {
       this.auth.firstName = '';
       this.auth.lastName = '';
       this.auth.password = '';
+      this.route.navigate(['/login']);
     }, errorMessage => {
       console.log(errorMessage);
     });

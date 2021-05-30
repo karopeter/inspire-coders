@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Forum } from '../../models/forum';
 import {ForumService } from '../../services/forum.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -9,7 +10,7 @@ import {ForumService } from '../../services/forum.service';
   templateUrl: './list-forum.component.html',
   styleUrls: ['./list-forum.component.scss']
 })
-export class ListForumComponent implements OnInit {
+export class ListForumComponent implements OnInit, OnDestroy {
   totalCourses = 10;
   coursePerPage = 2;
   currentPage = 1;
@@ -22,6 +23,7 @@ export class ListForumComponent implements OnInit {
   page: number;
   pageSize: number;
   selectedEntry: boolean;
+  subscription: Subscription;
 
   constructor(private forumService: ForumService) { }
 
@@ -54,5 +56,9 @@ export class ListForumComponent implements OnInit {
 
   isSelected(id: number): boolean {
     return id === this.selectedForum;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

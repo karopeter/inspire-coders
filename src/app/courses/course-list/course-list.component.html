@@ -22,7 +22,7 @@
         </form>
         <button type="button" class="btn btn-primary" style="margin-left: 40rem; margin-top: 3rem; width: 20%; height: 40%">Add Course</button>
       </div>
-      <table class="table inset-link" [ngClass]="isSelected(course.id) ? 'shadow' : null" *ngFor="let course of courses" (click)="toggleCourse(course.id)">
+      <table class="table inset-link">
         <thead>
           <tr class="table-active">
             <th scope="col">Title</th>
@@ -34,7 +34,7 @@
           </tr>
         </thead>
         <tbody style="margin-top: 1rem;">
-           <tr scope="row" class="flame-fire">
+           <tr scope="row" class="flame-fire" [ngClass]="isSelected(course.id) ? 'shadow' : null" *ngFor="let course of courses" (click)="toggleCourse(course.id)">
              <th>{{ course.title }}</th>
              <td>{{ course.code }}</td>
              <td>{{ course.description }}</td>

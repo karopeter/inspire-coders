@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Facilitator } from '../../models/facilitator';
 import { FacilitatorService } from '../../services/facilitator.service';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './list-facilitator.component.html',
   styleUrls: ['./list-facilitator.component.scss']
 })
-export class ListFacilitatorComponent implements OnInit {
+export class ListFacilitatorComponent implements OnInit, OnDestroy {
   totalCourses = 10;
   coursePerPage = 2;
   currentPage = 1;
@@ -57,6 +57,10 @@ export class ListFacilitatorComponent implements OnInit {
 
   isSelected(id: number): boolean {
     return id === this.selectedFacilitator;
+  }
+
+  ngOnDestroy(): void {
+    this.exChangedSubscription.unsubscribe();
   }
 }
 

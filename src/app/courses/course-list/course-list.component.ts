@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
 })
-export class CourseListComponent implements OnInit {
+export class CourseListComponent implements OnInit, OnDestroy {
   totalCourses = 10;
   coursePerPage = 2;
   currentPage = 1;
@@ -19,8 +22,9 @@ export class CourseListComponent implements OnInit {
   page: number;
   pageSize: number;
   selectedEntry: boolean;
+  subscription: Subscription;
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService, private router: Router) {}
 
   ngOnInit(): void {
     this.page = 1;
@@ -52,4 +56,9 @@ export class CourseListComponent implements OnInit {
   isSelected(id: number): boolean {
     return id === this.selectedCourse;
   }
- }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+}

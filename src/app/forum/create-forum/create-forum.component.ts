@@ -3,6 +3,9 @@ import { Forum } from '../../models/forum';
 import { ForumService } from '../../services/forum.service';
 import { NotificationService } from './../../services/notification.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as ForumListActions from '../store/forum-list.action';
 
 @Component({
   selector: 'app-create-forum',
@@ -17,13 +20,16 @@ export class CreateForumComponent implements OnInit {
   instructorId = 1;
   startDate = '';
   maxSize = 1;
+  subscription: Subscription;
 
-  constructor(private forumService: ForumService,  private route: Router, private notifyService: NotificationService) {}
+  constructor(private forumService: ForumService,  private route: Router, private notifyService: NotificationService,
+    private store: Store<{forumList: {forums: Forum[]}}>) {}
 
   ngOnInit(): void {
   }
 
   createForum(): void {
+    this.store.dispatch(new ForumListActions.AddForum());
     if (this.name.length === 0) {
       return;
     }
@@ -43,6 +49,7 @@ export class CreateForumComponent implements OnInit {
     this.forumService.addForum(this.forum).subscribe((response) => {
        this.name = '';
        this.route.navigate(['/list-forum']);
+       this.store.subscribe(data => console.log(data));
        console.log(response);
     });
   }

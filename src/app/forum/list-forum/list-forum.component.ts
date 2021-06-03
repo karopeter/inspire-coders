@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Forum } from '../../models/forum';
 import {ForumService } from '../../services/forum.service';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import * as forumList from '../store/forum-list.reducer';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class ListForumComponent implements OnInit, OnDestroy {
   selectedEntry: boolean;
   subscription: Subscription;
 
-  constructor(private forumService: ForumService) { }
+  constructor(private forumService: ForumService, private store: Store<{forumList: {forums: Forum[]}}>) { }
 
   ngOnInit(): void {
      this.page = 1;
@@ -34,6 +36,7 @@ export class ListForumComponent implements OnInit, OnDestroy {
        this.forums = data;
        if (this.forums.length > 0) {
          this.selectedForum = this.forums[0].id;
+         this.store.select('forumList');
        }
      });
   }
@@ -59,6 +62,6 @@ export class ListForumComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

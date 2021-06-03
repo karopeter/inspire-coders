@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Forum } from '../models/forum';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Subject } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
 const forumUrl  = 'http://tocoder-001-site1.itempurl.com';
@@ -10,6 +10,8 @@ const forumUrl  = 'http://tocoder-001-site1.itempurl.com';
   providedIn: 'root'
 })
 export class ForumService {
+  forumsChanged = new Subject<Forum[]>();
+  startedEditing = new Subject<number>();
   httpOptions = {
     headers: new HttpHeaders({ 'content-type': 'application/json'})
  };

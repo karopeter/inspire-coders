@@ -1,24 +1,12 @@
-// export interface State {
-//     isLoading: boolean;
-// }
+import { ForumListState, forumListReducer } from './forum/store/forum-list.reducer';
+import { ActionReducerMap } from '@ngrx/store';
 
-// const initialState: State = {
-//     isLoading: false
-// };
+export const rootReducer = {};
 
+export interface State {
+  forumList: ForumListState;
+}
 
-// export function appReducer(state = initialState, action) {
-//   switch (action.type) {
-//     case 'START_LOADING':
-//     return {
-//      isLoading: true
-//     };
-//     case 'STOP_LOADING':
-//       return {
-//         isLoading: false
-//       };
-//       default:
-//         return state;
-//   }
-// }
-
+export const reducers: ActionReducerMap<State, any> = {
+    forumList: forumListReducer
+};

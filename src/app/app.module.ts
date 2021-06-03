@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { DirectiveDirective } from './directive.directive';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { reducers } from './app.reducer';
 
 
 @NgModule({
@@ -77,7 +79,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
-  BrowserModule,
+   BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -85,6 +87,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
+    StoreModule.forRoot(reducers),
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },

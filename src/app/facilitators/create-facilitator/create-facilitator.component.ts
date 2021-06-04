@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Facilitator } from '../../models/facilitator';
 import { FacilitatorService } from '../../services/facilitator.service';
 import { NotificationService } from './../../services/notification.service';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import * as facilitatorList from '../store/facilitator-list.reducer';
+import * as FacilitatorListActions from '../store/facilitator-list.action';
 
 @Component({
   selector: 'app-create-facilitator',
@@ -23,12 +26,13 @@ export class CreateFacilitatorComponent implements OnInit {
   numberOfStudents = 1;
   courseId = 1;
 
-  constructor(private facilitatorService: FacilitatorService, private route: Router, private notifyService: NotificationService) { }
+  constructor(private facilitatorService: FacilitatorService, private route: Router, private notifyService: NotificationService, private store: Store<facilitatorList.AppState>) { }
 
   ngOnInit(): void {
   }
 
   createFacilitator(): void {
+    this.store.dispatch(new FacilitatorListActions.CreateFacilitator());
     if (this.firstName.length === 0) {
        return;
     }
@@ -53,6 +57,7 @@ export class CreateFacilitatorComponent implements OnInit {
     this.facilitatorService.addFacilitator(this.facilitator).subscribe((response) => {
       this.firstName = '';
       this.route.navigate(['/all-facilitator']);
+      this.store.subscribe(data => console.log(data));
       console.log(response);
     });
   }

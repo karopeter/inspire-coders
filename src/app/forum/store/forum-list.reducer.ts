@@ -5,6 +5,10 @@ export interface ForumListState {
   forums: Forum[];
 }
 
+export interface AppState {
+  forumList: ForumListState;
+}
+
 export interface State {
   isLoading: boolean;
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Facilitator } from '../../models/facilitator';
+import { Store } from '@ngrx/store';
 import { FacilitatorService } from '../../services/facilitator.service';
 import { Subscription } from 'rxjs';
+import * as facilitatorList from '../store/facilitator-list.reducer';
+import * as FacilitatorListActions from '../store/facilitator-list.action';
 
 
 @Component({
@@ -26,15 +29,18 @@ export class ListFacilitatorComponent implements OnInit{
 
   private exChangedSubscription: Subscription;
 
-  constructor(private facilitatorService: FacilitatorService) { }
+  constructor(private facilitatorService: FacilitatorService, private store: Store<facilitatorList.AppState>) { }
 
   ngOnInit(): void {
     this.page = 1;
     this.pageSize = 10;
-    this.facilitatorService.getAllFacilitator(1, 10).subscribe((data) => {
+    this.exChangedSubscription = this.facilitatorService.getAllFacilitator(1, 10).subscribe((data) => {
       this.facilitators = data;
       if (this.facilitators.length > 0) {
          this.selectedFacilitator = this.facilitators[0].id;
+      } else {
+        this.store.select('facilitatorList');
+        this.store.dispatch(new FacilitatorListActions.AllFacilitator());
       }
     });
   }

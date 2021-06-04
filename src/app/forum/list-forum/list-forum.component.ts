@@ -5,7 +5,7 @@ import {ForumService } from '../../services/forum.service';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import * as forumList from '../store/forum-list.reducer';
-
+import * as ForumListActions from '../store/forum-list.action';
 
 @Component({
   selector: 'app-list-forum',
@@ -27,7 +27,7 @@ export class ListForumComponent implements OnInit, OnDestroy {
   selectedEntry: boolean;
   subscription: Subscription;
 
-  constructor(private forumService: ForumService, private store: Store<{forumList: {forums: Forum[]}}>) { }
+  constructor(private forumService: ForumService, private store: Store<forumList.AppState>) { }
 
   ngOnInit(): void {
      this.page = 1;
@@ -36,7 +36,9 @@ export class ListForumComponent implements OnInit, OnDestroy {
        this.forums = data;
        if (this.forums.length > 0) {
          this.selectedForum = this.forums[0].id;
-         this.store.select('forumList');
+       } else {
+        this.store.select('forumList');
+        this.store.dispatch(new ForumListActions.AllForum());
        }
      });
   }

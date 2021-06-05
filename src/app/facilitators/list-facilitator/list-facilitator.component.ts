@@ -6,6 +6,7 @@ import { FacilitatorService } from '../../services/facilitator.service';
 import { Subscription } from 'rxjs';
 import * as facilitatorList from '../store/facilitator-list.reducer';
 import * as FacilitatorListActions from '../store/facilitator-list.action';
+import * as fromApp from '../../app.reducer';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class ListFacilitatorComponent implements OnInit{
 
   private exChangedSubscription: Subscription;
 
-  constructor(private facilitatorService: FacilitatorService, private store: Store<facilitatorList.AppState>) { }
+  constructor(private facilitatorService: FacilitatorService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
     this.page = 1;

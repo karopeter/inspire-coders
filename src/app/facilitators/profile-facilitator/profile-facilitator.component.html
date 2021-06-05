@@ -77,31 +77,19 @@
            <tr class="table-active">
              <th scope="col">Title</th>
              <th scope="col">Code</th>
-             <th scope="col">Number of Students</th>
              <th scope="col">Level</th>
              <th scope="col">Date Created</th>
              <th scope="col">Status</th>
            </tr>
          </thead>
          <tbody style="margin-top: 1rem;">
-          <tr scope="row" class="new-crash">
-            <th>Web Fundamentals</th>
-            <td>001</td>
-            <td>10</td>
-            <td>Beginner</td>
-            <td>12/10/2021</td>
+          <tr scope="row" class="new-crash"  [ngClass]="isSelected(course.id) ? 'shadow' : null" *ngFor="let course of courses"  (click)="toggleCourse(course.id)">
+            <th>{{ course.title }}</th>
+            <td>{{ course.code }}</td>
+            <td>{{ course.level }}</td>
+            <td>{{ course.createdOn }}</td>
             <td><button type="button" class="high-drive">Completed</button></td>
           </tr>
-         </tbody>
-         <tbody style="margin-top: 1rem;">
-           <tr scope="row" class="new-crash">
-            <th>Web Fundamentals</th>
-            <td>001</td>
-            <td>20</td>
-            <td>Intermediate</td>
-            <td>12/10/2021</td>
-            <td><button type="button" class="breath-drive">Ongoing</button></td>
-           </tr>
          </tbody>
       </table>
     </main>

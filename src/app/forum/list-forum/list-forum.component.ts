@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import * as forumList from '../store/forum-list.reducer';
 import * as ForumListActions from '../store/forum-list.action';
+import * as fromApp from '../../app.reducer';
 
 @Component({
   selector: 'app-list-forum',
@@ -27,7 +28,7 @@ export class ListForumComponent implements OnInit, OnDestroy {
   selectedEntry: boolean;
   subscription: Subscription;
 
-  constructor(private forumService: ForumService, private store: Store<forumList.AppState>) { }
+  constructor(private forumService: ForumService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
      this.page = 1;

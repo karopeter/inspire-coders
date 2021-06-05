@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as ForumListActions from '../store/forum-list.action';
 import * as forumList from '../store/forum-list.reducer';
+import * as fromApp from '../../app.reducer';
 
 @Component({
   selector: 'app-create-forum',
@@ -24,7 +25,7 @@ export class CreateForumComponent implements OnInit {
   subscription: Subscription;
 
   constructor(private forumService: ForumService,  private route: Router, private notifyService: NotificationService,
-    private store: Store<forumList.AppState>) {}
+    private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
   }

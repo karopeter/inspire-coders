@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import * as facilitatorList from '../store/facilitator-list.reducer';
 import * as FacilitatorListActions from '../store/facilitator-list.action';
+import * as fromApp from '../../app.reducer';
 
 @Component({
   selector: 'app-create-facilitator',
@@ -26,7 +27,7 @@ export class CreateFacilitatorComponent implements OnInit {
   numberOfStudents = 1;
   courseId = 1;
 
-  constructor(private facilitatorService: FacilitatorService, private route: Router, private notifyService: NotificationService, private store: Store<facilitatorList.AppState>) { }
+  constructor(private facilitatorService: FacilitatorService, private route: Router, private notifyService: NotificationService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
   }

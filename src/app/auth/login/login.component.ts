@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 import { AlertComponent } from '../../shared/alert/alert.component';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { PlaceholderDirective } from '../../shared/placeholder/placeholder.directive';
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
    error!: string;
    @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
    private closeSub: Subscription;
-  constructor(private authService: AuthService, private notifyService: NotificationService, private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private authService: AuthService, private router: Router, private notifyService: NotificationService, private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(): void {
   }
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log('Message sent' + resData);
       this.auth.username = '';
       this.auth.password = '';
+      this.router.navigate(['/dashboard']);
     }, errorMessage => {
       console.log(errorMessage);
       this.showErrorAlert(errorMessage);

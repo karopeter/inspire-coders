@@ -42,7 +42,7 @@ import { DirectiveDirective } from './directive.directive';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { reducers } from './app.reducer';
+import * as fromApp from './app.reducer';
 
 
 @NgModule({
@@ -87,7 +87,7 @@ import { reducers } from './app.reducer';
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(fromApp.reducers),
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },

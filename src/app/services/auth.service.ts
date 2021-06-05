@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable, throwError, Subject } from 'rxjs';
+import { Observable, throwError, Subject, BehaviorSubject } from 'rxjs';
 import { Auth } from '../models/auth';
 import { Login } from '../models/login';
+import { User } from '../models/user.model';
 import { ForgetPassword } from '../models/forget-password.model';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../app.reducer';
+import * as AuthActions from '../auth/store/auth.actions';
 
 const authUrl = 'http://tocoder-001-site1.itempurl.com';
 
@@ -14,6 +18,7 @@ const authUrl = 'http://tocoder-001-site1.itempurl.com';
   providedIn: 'root'
 })
 export class AuthService {
+  // user = new BehaviorSubject<User>(null as any);
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
   };
@@ -23,7 +28,7 @@ export class AuthService {
   private resetToken: string;
   private userId: string;
   private authStatusListener = new Subject<boolean>();
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Store<fromApp.AppState>) { }
 
   getToken() {
     return this.token;
@@ -62,12 +67,34 @@ export class AuthService {
         this.isAuthenticated = true;
         this.userId = resData.userId;
         this.authStatusListener.next(true);
+        this.store.dispatch(new AuthActions.Login({email: email, userId: userId, token: token, expirationDate: expirationDate}));
         const now = new Date();
         const expirationDate = new Date(now.getTime() * expiresInDuration * 1000);
         console.log(expirationDate);
         this.saveAuthData(token, expirationDate, this.userId);
       }
     }));
+  }
+
+  autoLogin(): void {
+    const userData: {
+      id: string;
+      email: string;
+      token: string;
+      tokenExpirationDate: string;
+    } = JSON.parse(localStorage.getItem('userData') || '{}');
+
+    if (!userData) {
+     return;
+    }
+    const loadedUser = new User(userData.email, userData.id, userData.token, new Date(userData.tokenExpirationDate));
+
+    if (loadedUser) {
+      // this.user.next(loadedUser);
+      this.store.dispatch(new AuthActions.Login({ email: loadedUser.email,
+        userId: loadedUser.id, token: userData.token, expirationDate: new Date(userData.tokenExpirationDate)}));
+      const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
+    }
   }
 
   forgetPassword(username: string, oldPassword: string, newPassword: string) {
@@ -82,6 +109,7 @@ export class AuthService {
      localStorage.setItem('expiration', expirationDate.toISOString());
      localStorage.setItem('userId', userId);
    }
+
 
 
   private handleError(errorRes: HttpErrorResponse) {

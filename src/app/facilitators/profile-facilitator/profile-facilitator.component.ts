@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../services/course.service';
 import { Course } from '../../models/course';
 import { Forum } from '../../models/forum';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import * as fromApp from '../../app.reducer';
+import * as CourseListActions from '../../courses/store/course-list.action';
 
 @Component({
   selector: 'app-profile-facilitator',
@@ -19,7 +22,7 @@ export class ProfileFacilitatorComponent implements OnInit {
   selectedEntry: boolean;
   subscription: Subscription;
 
-  constructor(private courseService: CourseService) { }
+  constructor(private courseService: CourseService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
     this.page = 1;
@@ -28,6 +31,9 @@ export class ProfileFacilitatorComponent implements OnInit {
       this.courses = data;
       if (this.courses.length > 0) {
         this.selectedCourse = this.courses[0].id;
+      } else {
+        this.store.select('courseList');
+        this.store.dispatch(new CourseListActions.ListCourse());
       }
     });
   }

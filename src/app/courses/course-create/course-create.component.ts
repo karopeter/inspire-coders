@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
 import { NotificationService } from '../../services/notification.service';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import * as fromApp from '../../app.reducer';
+import * as CourseListActions from '../store/course-list.action';
 
 @Component({
   selector: 'app-course-create',
@@ -17,12 +20,13 @@ export class CourseCreateComponent implements OnInit {
   level = '';
   numberOfStudents = 2;
 
-  constructor(private courseService: CourseService, private route: Router, private notifyService: NotificationService) { }
+  constructor(private courseService: CourseService, private route: Router,  private notifyService: NotificationService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
   }
 
     createCourse(): void {
+      this.store.dispatch(new CourseListActions.CreateCourse());
      if (this.title.length === 0) {
        return;
      }
@@ -41,6 +45,7 @@ export class CourseCreateComponent implements OnInit {
      this.courseService.addCourse(this.course).subscribe((response) => {
       this.title = '';
       this.route.navigate(['/course-list']);
+      this.store.subscribe(data => console.log(data));
       console.log(response);
     });
    }

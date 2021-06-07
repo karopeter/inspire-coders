@@ -3,7 +3,10 @@ import { PageEvent } from '@angular/material/paginator';
 import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import * as fromApp from '../../app.reducer';
+import * as CourseListActions from '../store/course-list.action';
 
 
 @Component({
@@ -24,15 +27,18 @@ export class CourseListComponent implements OnInit {
   selectedEntry: boolean;
   subscription: Subscription;
 
-  constructor(private courseService: CourseService, private router: Router) {}
+  constructor(private courseService: CourseService, private router: Router, private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
     this.page = 1;
     this.pageSize = 10;
-    this.courseService.getAllCourse(1, 10).subscribe((data) => {
+    this.subscription = this.courseService.getAllCourse(1, 10).subscribe((data) => {
       this.courses = data;
       if (this.courses.length > 0) {
         this.selectedCourse = this.courses[0].id;
+      } else {
+        this.store.select('courseList');
+        this.store.dispatch(new CourseListActions.ListCourse());
       }
     });
   }

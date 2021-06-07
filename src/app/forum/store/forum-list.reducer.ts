@@ -14,7 +14,7 @@ export interface State {
 }
 
 const initialState = {
-  forums: []
+  forums: null as any
 };
 
 

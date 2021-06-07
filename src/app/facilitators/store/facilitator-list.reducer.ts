@@ -14,7 +14,7 @@ export interface State {
 }
 
 const initialState  = {
-  facilitators: []
+  facilitators: null as any
 };
 
 export function facilitatorListReducer(state: FacilitatorListState = initialState, action: FacilitatorListActions.FacilitatorListActions) {

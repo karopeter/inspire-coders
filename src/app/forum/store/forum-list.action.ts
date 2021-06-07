@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 import {Forum } from '../../models/forum';
 
-export const ADD_FORUM = 'ADD_FORUM';
-export const ALL_FORUM = 'ALL_FORUM';
+export const ADD_FORUM = '[Forum List] Add Forum';
+export const ALL_FORUM = '[Forum List] All Forum';
 
 export class AddForum implements Action {
   readonly type = ADD_FORUM;

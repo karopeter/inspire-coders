@@ -1,11 +1,11 @@
 import { Action } from '@ngrx/store';
 import { Course } from '../../models/course';
 
-export const CREATE_COURSE = 'CREATE_COURSE';
-export const LIST_COURSE = 'LIST_COURSE';
+export const CREATE_COURSE = '[Course List] Create Course';
+export const LIST_COURSE = '[Course List] List Course';
 
 export class CreateCourse implements Action {
-  readonly type =   CREATE_COURSE;
+  readonly type = CREATE_COURSE;
 
   constructor(public payload: Course) {}
 }

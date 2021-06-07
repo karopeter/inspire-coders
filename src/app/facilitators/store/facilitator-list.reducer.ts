@@ -27,7 +27,7 @@ export function facilitatorListReducer(state: FacilitatorListState = initialStat
         case FacilitatorListActions.ALL_FACILITATOR:
           return {
             ...state,
-            facilitators: [...state.facilitators, action.payload]
+            facilitators: [...state.facilitators, ...action.payload]
           };
         default: {
           return state;

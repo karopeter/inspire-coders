@@ -67,7 +67,7 @@ export class AuthService {
         this.isAuthenticated = true;
         this.userId = resData.userId;
         this.authStatusListener.next(true);
-        this.store.dispatch(new AuthActions.Login({email: email, userId: userId, token: token, expirationDate: expirationDate}));
+        this.store.dispatch(new AuthActions.AuthenticateSuccess({email: email, userId: userId, token: token, expirationDate: expirationDate}));
         const now = new Date();
         const expirationDate = new Date(now.getTime() * expiresInDuration * 1000);
         console.log(expirationDate);
@@ -91,7 +91,7 @@ export class AuthService {
 
     if (loadedUser) {
       // this.user.next(loadedUser);
-      this.store.dispatch(new AuthActions.Login({ email: loadedUser.email,
+      this.store.dispatch(new AuthActions.AuthenticateSuccess({ email: loadedUser.email,
         userId: loadedUser.id, token: userData.token, expirationDate: new Date(userData.tokenExpirationDate)}));
       const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
     }

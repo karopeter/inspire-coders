@@ -33,7 +33,7 @@ export class ListForumComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
      this.page = 1;
      this.pageSize = 10;
-     this.forumService.getAllForum(1, 10).subscribe((data) => {
+     this.subscription = this.forumService.getAllForum(1, 10).subscribe((data) => {
        this.forums = data;
        if (this.forums.length > 0) {
          this.selectedForum = this.forums[0].id;

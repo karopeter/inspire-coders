@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from './../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -81,7 +83,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     DashboardComponent
   ],
   imports: [
-   BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -91,6 +93,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     MatCardModule,
     StoreModule.forRoot(fromApp.reducers),
      EffectsModule.forRoot([AuthEffects]),
+     StoreDevtoolsModule.instrument({logOnly: environment.production}),
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -76,26 +76,26 @@ export class AuthService {
     }));
   }
 
-  autoLogin(): void {
-    const userData: {
-      id: string;
-      email: string;
-      token: string;
-      tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('userData') || '{}');
+  // autoLogin(): void {
+  //   const userData: {
+  //     id: string;
+  //     email: string;
+  //     token: string;
+  //     tokenExpirationDate: string;
+  //   } = JSON.parse(localStorage.getItem('userData') || '{}');
 
-    if (!userData) {
-     return;
-    }
-    const loadedUser = new User(userData.email, userData.id, userData.token, new Date(userData.tokenExpirationDate));
+  //   if (!userData) {
+  //    return;
+  //   }
+  //   const loadedUser = new User(userData.email, userData.id, userData.token, new Date(userData.tokenExpirationDate));
 
-    if (loadedUser) {
-      // this.user.next(loadedUser);
-      this.store.dispatch(new AuthActions.AuthenticateSuccess({ email: loadedUser.email,
-        userId: loadedUser.id, token: userData.token, expirationDate: new Date(userData.tokenExpirationDate)}));
-      const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
-    }
-  }
+  //   if (loadedUser) {
+  //     // this.user.next(loadedUser);
+  //     this.store.dispatch(new AuthActions.AuthenticateSuccess({ email: loadedUser.email,
+  //       userId: loadedUser.id, token: userData.token, expirationDate: new Date(userData.tokenExpirationDate)}));
+  //     const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
+  //   }
+  // }
 
   forgetPassword(username: string, oldPassword: string, newPassword: string) {
     const forgetPassword: ForgetPassword = {username: username, oldPassword: oldPassword, newPassword: newPassword };

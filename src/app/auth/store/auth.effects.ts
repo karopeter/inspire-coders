@@ -5,6 +5,7 @@ import { switchMap, catchError, map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../../models/user.model';
 
 const authUrl = 'http://tocoder-001-site1.itempurl.com';
 
@@ -58,7 +59,7 @@ export class AuthEffects {
        }).pipe(
          map(resData => {
            // ... client side
-             return handleAuthentication(+resData.expiresIn, resData.email, resData.localId, resData.idToken);
+           return handleAuthentication(+resData.expiresIn, resData.email, resData.localId, resData.idToken);
          }), catchError(errorRes => {
            // .. server side
            return handleError(errorRes);
@@ -85,6 +86,27 @@ export class AuthEffects {
         }));
     })
   );
+
+  @Effect()
+  autoLogin = this.actions$.pipe(ofType(AuthActions.AUTO_LOGIN), map(() => {
+    const userData: {
+      email: string;
+      id: string;
+      token: string;
+      tokenExpirationDate: string;
+    } = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (!userData) {
+      return { type: 'DUMMY' };
+     }
+     const loadedUser = new User(userData.email, userData.id, userData.token, new Date(userData.tokenExpirationDate));
+     if (loadedUser) {
+       const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
+         new AuthActions.AuthenticateSuccess({
+           email: loadedUser.email, userId: loadedUser.id, token: userData.token, expirationDate: new Date(userData.tokenExpirationDate)
+       });
+     }
+     return { type: 'DUMMY' };
+  }));
 
   @Effect({ dispatch: false })
   authSuccess = this.actions$.pipe(ofType(AuthActions.AUTHENTICATE_SUCCESS), tap(() => {

@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit, OnDestroy {
    isLoading = false;
    private storeSub: Subscription;
    @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
-   private closeSub: Subscription;
   constructor(private authService: AuthService, private router: Router, private notifyService: NotificationService, private componentFactoryResolver: ComponentFactoryResolver, private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
@@ -33,7 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm): void {
     console.log(this.auth);
-    this.authService.login(this.auth).subscribe(resData => {
+    this.storeSub = this.authService.login(this.auth).subscribe(resData => {
       console.log('Message sent' + resData);
       // this.auth.username = '';
       // this.auth.password = '';
@@ -55,9 +54,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.closeSub) {
-      this.closeSub.unsubscribe();
-    }
     if (this.storeSub) {
       this.storeSub.unsubscribe();
     }

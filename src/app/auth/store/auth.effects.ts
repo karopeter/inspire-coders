@@ -88,6 +88,22 @@ export class AuthEffects {
   );
 
   @Effect()
+  forgetPassword = this.actions$.pipe(
+    ofType(AuthActions.FORGET_PASSWORD),
+    switchMap((forgetpasswordAction: AuthActions.ForgetPassword) => {
+      return this.http.patch(`${authUrl}/api/Account/changepassword/${username}/${forgetpassword}`, {
+       username: forgetpasswordAction.payload.username,
+       oldPassword: forgetpasswordAction.payload.oldPassword,
+       newPassword: forgetpasswordAction.payload.newPassword
+      }).pipe(map(resetToken => {
+        return resetToken;
+      }), catchError(errorRes => {
+         return handleError(errorRes);
+      }));
+    })
+  );
+
+  @Effect()
   autoLogin = this.actions$.pipe(ofType(AuthActions.AUTO_LOGIN), map(() => {
     const userData: {
       email: string;

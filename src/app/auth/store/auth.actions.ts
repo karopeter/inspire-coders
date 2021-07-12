@@ -6,6 +6,7 @@ export const AUTHENTICATE_FAIL = '[Auth] Login Fail';
 export const SIGNUP_START = '[Auth] Signup Start';
 export const CLEAR_ERROR = '[Auth] Clear Error';
 export const AUTO_LOGIN = '[Auth] Auto Login';
+export const FORGET_PASSWORD = '[Auth] Forget Password';
 
 
 export class AuthenticateSuccess implements Action {
@@ -39,4 +40,10 @@ export class AutoLogin implements Action {
    readonly type = AUTO_LOGIN;
 }
 
-export type AuthActions = AuthenticateSuccess | LoginStart | AuthenticateFail | SignupStart | ClearError | AutoLogin;
+export class ForgetPassword implements Action {
+  readonly type = FORGET_PASSWORD;
+
+  constructor(public payload: {username: string; oldPassword: string; newPassword: string}) {}
+}
+
+export type AuthActions = AuthenticateSuccess | LoginStart | AuthenticateFail | SignupStart | ClearError | AutoLogin | ForgetPassword;
